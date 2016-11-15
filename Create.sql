@@ -1,4 +1,4 @@
-use SI2
+USE SI2
 
 CREATE TABLE Tipo_Equipamento (
 	nome VARCHAR(64) PRIMARY KEY,
@@ -18,12 +18,26 @@ CREATE TABLE Preco (
 	PRIMARY KEY (validade,valor)
 )
 
+CREATE TABLE Empregado (
+	numero INT PRIMARY KEY,
+	nome VARCHAR(32) NOT NULL
+)
+
+CREATE TABLE Cliente (
+	numero INT PRIMARY KEY,
+	nome VARCHAR(64),
+	nif NUMERIC(9),
+	morada VARCHAR(64)
+)
+
 CREATE TABLE Aluguer (
 	nSerie INT PRIMARY KEY,
 	dataInicio DATETIME NOT NULL,
 	dataFim DATE,
 	tipo INT NOT NULL,
-	preco MONEY NOT NULL
+	preco MONEY NOT NULL,
+	nEmpregado INT FOREIGN KEY REFERENCES Empregado,
+	nCliente INT FOREIGN KEY REFERENCES Cliente
 )
 
 CREATE TABLE Promocao (
@@ -40,16 +54,4 @@ CREATE TABLE Aluguer_Equipamento (
 	Codigo INT FOREIGN KEY REFERENCES Equipamento,
 	idPromocao INT FOREIGN KEY REFERENCES Promocao,
 	PRIMARY KEY (nSerie, Codigo)
-)
-
-CREATE TABLE Empregado (
-	numero INT PRIMARY KEY,
-	nome VARCHAR(32) NOT NULL
-)
-
-CREATE TABLE Cliente (
-	numero INT PRIMARY KEY,
-	nome VARCHAR(64),
-	nif NUMERIC(9),
-	morada VARCHAR(64)
 )

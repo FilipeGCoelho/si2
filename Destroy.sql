@@ -7,3 +7,4 @@ IF OBJECT_ID('Promocao') IS NOT NULL DROP TABLE Promocao
 IF OBJECT_ID('Empregado') IS NOT NULL DROP TABLE Empregado
 IF OBJECT_ID('Cliente') IS NOT NULL DROP TABLE Cliente
 IF OBJECT_ID('Equipamento') IS NOT NULL DROP TABLE Equipamento
+IF OBJECT_ID('Tipo_Equipamento') IS NOT NULL DROP TABLE Tipo_Equipamento
