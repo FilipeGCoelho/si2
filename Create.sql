@@ -1,6 +1,6 @@
 USE SI2
 
-CREATE TABLE Tipo_Equipamento (
+CREATE TABLE Tipo (
 	nome VARCHAR(64) PRIMARY KEY,
 	descricao VARCHAR(128) NOT NULL
 )
@@ -8,7 +8,7 @@ CREATE TABLE Tipo_Equipamento (
 CREATE TABLE Equipamento (
 	id INT PRIMARY KEY,
 	Descricao VARCHAR(128) NOT NULL,
-	tipo VARCHAR(64) FOREIGN KEY REFERENCES Tipo_Equipamento
+	tipo VARCHAR(64) FOREIGN KEY REFERENCES Tipo
 )
 
 CREATE TABLE Preco (

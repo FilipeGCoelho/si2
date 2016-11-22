@@ -76,26 +76,30 @@ go
 
 go
 create procedure Insert_Promocao
-	@id INT ,
-	@Descricao VARCHAR(128),
-	@tipo VARCHAR(64) 
+	@dataInicio DATE,
+	@dataFim DATE,
+	@descricao VARCHAR(128),
+	@tipo VARCHAR(8)
 
 	as
-	insert into Promocao Values (@id, @Descricao, @tipo);
+	insert into Promocao Values (@dataInicio, @dataFim, @descricao, @tipo);
 
 go
 
 
 go
 create procedure Update_Promocao
-	@id INT ,
-	@Descricao VARCHAR(128),
-	@tipo VARCHAR(64)  
+	@id INT,
+	@dataInicio DATE,
+	@dataFim DATE,
+	@descricao VARCHAR(128),
+	@tipo VARCHAR(8)
 
 	as
 	Update Promocao
-	set Descricao = @Descricao, tipo = @tipo
+	set datainicio = @datainicio,  dataFim = @dataFim, descricao = @Descricao, tipo = @tipo
 	where id = @id
+
 go
 
 
