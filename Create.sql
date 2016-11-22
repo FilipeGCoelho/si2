@@ -15,7 +15,7 @@ CREATE TABLE Preco (
 	validade INT NOT NULL,
 	valor MONEY NOT NULL,
 	idEquipamento INT FOREIGN KEY REFERENCES Equipamento,
-	PRIMARY KEY (validade,valor)
+	PRIMARY KEY (validade, idEquipamento)
 )
 
 CREATE TABLE Empregado (
