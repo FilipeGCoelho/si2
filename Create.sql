@@ -43,7 +43,7 @@ CREATE TABLE Aluguer (
 CREATE TABLE Promocao (
 	id INT IDENTITY(1,1) PRIMARY KEY,
 	dataInicio DATE NOT NULL,
-	dataFIm DATE NOT NULL,
+	dataFim DATE NOT NULL,
 	descricao VARCHAR(128) NOT NULL,
 	tipo VARCHAR(8) NOT NULL,
 	CONSTRAINT CheckTipo CHECK (tipo = 'tempo' OR tipo = 'desconto')
