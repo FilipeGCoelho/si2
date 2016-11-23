@@ -13,6 +13,7 @@ create procedure Insert_Cliente
 go
 
 
+
 go
 create procedure Update_Cliente
 	@numero INT,
@@ -34,8 +35,14 @@ create procedure Remove_Cliente
 	as
 	DELETE FROM Cliente WHERE numero = @numero;
 go
-
-
+----------------****
+go
+create trigger DeleteClient on Cliente 
+instead of delete
+as
+	--todo
+go
+----------------****
 -- EQUIPAMENTO PROCEDURES
 
 go
