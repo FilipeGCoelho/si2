@@ -7,48 +7,47 @@ GO
 CREATE TABLE dbb.Tipo (
 	nome VARCHAR(64) PRIMARY KEY,
 	descricao VARCHAR(128) NOT NULL,
-	hidden bit default 0 NOT NULL
+	hidden BIT DEFAULT 0 NOT NULL
 )
 
 CREATE TABLE dbb.Equipamento (
-	id INT PRIMARY KEY,
+	codigo INT IDENTITY(1,1) PRIMARY KEY,
 	descricao VARCHAR(128) NOT NULL,
-	tipo VARCHAR(64) FOREIGN KEY REFERENCES Tipo,
-	hidden bit default 0 NOT NULL
+	tipo VARCHAR(64) FOREIGN KEY REFERENCES dbb.Tipo,
+	hidden BIT DEFAULT 0 NOT NULL
 )
 
 CREATE TABLE dbb.Preco (
 	validade INT NOT NULL,
 	valor MONEY NOT NULL,
-	idEquipamento INT FOREIGN KEY REFERENCES Equipamento,
-	hidden bit default 0 NOT NULL,
+	idEquipamento INT FOREIGN KEY REFERENCES dbb.Equipamento,
+	hidden BIT DEFAULT 0 NOT NULL,
 	PRIMARY KEY (validade, idEquipamento)
-	
 )
 
 CREATE TABLE dbb.Empregado (
-	numero INT PRIMARY KEY,
+	numero INT IDENTITY(1,1) PRIMARY KEY,
 	nome VARCHAR(32) NOT NULL,
-	hidden bit default 0 NOT NULL
+	hidden BIT DEFAULT 0 NOT NULL
 )
 
 CREATE TABLE dbb.Cliente (
-	numero INT PRIMARY KEY,
+	numero INT IDENTITY(1,1) PRIMARY KEY,
 	nome VARCHAR(64),
 	nif NUMERIC(9),
 	morada VARCHAR(64),
-	hidden bit default 0 NOT NULL
+	hidden BIT DEFAULT 0 NOT NULL
 )
 
 CREATE TABLE dbb.Aluguer (
-	nSerie INT PRIMARY KEY,
+	nSerie INT IDENTITY(1,1) PRIMARY KEY,
 	dataInicio DATETIME NOT NULL,
-	dataFim DATE,
-	tipo INT NOT NULL,
+	dataFim DATETIME,
+	tipo INT NOT NULL, --duracao
 	preco MONEY NOT NULL,
-	nEmpregado INT FOREIGN KEY REFERENCES Empregado,
-	nCliente INT FOREIGN KEY REFERENCES Cliente,
-	hidden bit default 0 NOT NULL
+	nEmpregado INT FOREIGN KEY REFERENCES dbb.Empregado,
+	nCliente INT FOREIGN KEY REFERENCES dbb.Cliente,
+	hidden BIT DEFAULT 0 NOT NULL
 )
 
 CREATE TABLE dbb.Promocao (
@@ -57,16 +56,23 @@ CREATE TABLE dbb.Promocao (
 	dataFim DATE NOT NULL,
 	descricao VARCHAR(128) NOT NULL,
 	tipo VARCHAR(8) NOT NULL,
-	hidden bit default 0 NOT NULL,
+	hidden BIT DEFAULT 0 NOT NULL,
 	CONSTRAINT CheckTipo CHECK (tipo = 'tempo' OR tipo = 'desconto')
 )
 
+CREATE TABLE dbb.Aluguer_Promocao (
+	nSerieAluguer INT FOREIGN KEY REFERENCES dbb.Aluguer,
+	idPromocao INT FOREIGN KEY REFERENCES dbb.Promocao,
+	hidden BIT DEFAULT 0 NOT NULL,
+	PRIMARY KEY (nSerieAluguer, idPromocao)
+)
+
+
 CREATE TABLE dbb.Aluguer_Equipamento (
-	nSerie INT FOREIGN KEY REFERENCES Aluguer,
-	codigo INT FOREIGN KEY REFERENCES Equipamento,
-	idPromocao INT FOREIGN KEY REFERENCES Promocao,
-	hidden bit default 0 NOT NULL,
-	PRIMARY KEY (nSerie, Codigo)
+	nSerieAluguer INT FOREIGN KEY REFERENCES dbb.Aluguer,
+	codigoEquipamento INT FOREIGN KEY REFERENCES dbb.Equipamento,
+	hidden BIT DEFAULT 0 NOT NULL,
+	PRIMARY KEY (nSerieAluguer, CodigoEquipamento)
 )
 
 --Views-----------------------------
@@ -82,7 +88,7 @@ go
 go
 CREATE VIEW Equipamento
 as
-	SELECT id, descricao, tipo
+	SELECT codigo, descricao, tipo
 	FROM dbb.Equipamento
 	WHERE hidden = 0
 go
@@ -106,7 +112,7 @@ go
 go
 CREATE VIEW Cliente
 as
-	SELECT numero, nome, nuf, morada
+	SELECT numero, nome, nif, morada
 	FROM dbb.Cliente
 	WHERE hidden = 0
 go
@@ -120,9 +126,17 @@ as
 go
 
 go
+CREATE VIEW Aluguer_Promocao
+as
+	SELECT nSerieAluguer, idPromocao
+	FROM dbb.Aluguer_Promocao
+	WHERE hidden = 0
+go
+
+go
 CREATE VIEW Aluguer_Equipamento
 as
-	SELECT nSerie, codigo, idPromocao
+	SELECT nSerieAluguer, codigoEquipamento
 	FROM dbb.Aluguer_Equipamento
 	WHERE hidden = 0
 go
