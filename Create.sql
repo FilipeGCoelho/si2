@@ -148,3 +148,5 @@ as
 	FROM dbb.Aluguer
 	WHERE hidden = 0
 go
+
+insert into Cliente values (null, null, null);

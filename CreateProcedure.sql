@@ -10,7 +10,6 @@ create procedure Insert_Cliente
 
 	as
 	insert into Cliente Values (@nome, @nif, @morada)
-
 go
 
 
@@ -23,9 +22,12 @@ create procedure Update_Cliente
 	@morada VARCHAR(64) 
 
 	as
-	Update Cliente 
-	set nome = @nome, nif = @nif, morada = @morada
-	where numero = @numero
+	if (@numero <> 1)
+	begin
+		Update Cliente 
+		set nome = @nome, nif = @nif, morada = @morada
+		where numero = @numero
+	end
 go
 
 
@@ -34,7 +36,10 @@ create procedure Remove_Cliente
 	@numero INT
 
 	as
-	DELETE FROM Cliente WHERE numero = @numero;
+	if (@numero <> 1)
+	begin
+		DELETE FROM Cliente WHERE numero = @numero;
+	end
 go
 
 ----------------****  Trigger
@@ -56,13 +61,12 @@ go
 
 go
 create procedure Insert_Equipamento
-	@codigo INT output,
 	@Descricao VARCHAR(128),
-	@tipo VARCHAR(64) 
+	@tipo VARCHAR(64)
 
 as
+	
 	insert into Equipamento Values (@Descricao, @tipo);
-	set @codigo = SCOPE_IDENTITY();
 go
 
 
@@ -77,7 +81,6 @@ as
 	set Descricao = @Descricao, tipo = @tipo
 	where codigo = @codigo
 go
-
 
 go
 create procedure Remove_Equipamento
@@ -165,7 +168,6 @@ create procedure Insert_Aluguer_Com_Cliente
 	@idCliente INT,
 
 	--dados aluguer
-	@nSerie INT output,
 	@dataInicio DATETIME,
 	@dataFim DATE,
 	@tipo INT,
@@ -173,8 +175,8 @@ create procedure Insert_Aluguer_Com_Cliente
 	@nEmpregado INT
 as
 
-	insert into Aluguer values (@dataInicio, @dataFim, @tipo, @preco, @idCliente, @nEmpregado);
-	set @nSerie = SCOPE_IDENTITY();
+	insert into Aluguer values (@dataInicio, @dataFim, @tipo, @preco, @nEmpregado, @idCliente);
+	
 
 go
 
@@ -189,13 +191,11 @@ create procedure Insert_Aluguer_Sem_Cliente
 	@moradaCliente VARCHAR(64),
 
 	--dados aluguer
-	@nSerie INT,
 	@dataInicio DATETIME,
 	@dataFim DATE,
-	@tipo INT,
+	@tipo INT, --duracao
 	@preco MONEY,
-	@nEmpregado INT,
-	@idCliente INT OUTPUT
+	@nEmpregado INT
 as
 	set transaction isolation level REPEATABLE READ
 	begin tran
@@ -203,9 +203,9 @@ as
 		begin try
 			exec Insert_Cliente @nomeCliente, @nifCliente, @moradaCliente;
 
-			set @idCliente = SCOPE_IDENTITY();
+			declare @idCliente INT = @@IDENTITY;
 
-			exec Insert_Aluguer_Com_Cliente @idCliente, @nSerie, @dataInicio, @dataFim, @tipo, @preco, @nEmpregado;
+			exec Insert_Aluguer_Com_Cliente @idCliente, @dataInicio, @dataFim, @tipo, @preco, @nEmpregado;
 
 			commit
 		end try
@@ -232,7 +232,7 @@ go
 create trigger Delete_Aluguer_Trigger on Aluguer
 instead of delete
 as
-	set transaction isolation level READ REPEATABLE
+	set transaction isolation level REPEATABLE READ
 	begin tran
 		
 		begin try
@@ -241,23 +241,24 @@ as
 				on deleted.nSerie = Aluguer.nSerie
 				where Aluguer.dataInicio > GETDATE();
 
-			if (select COUNT(*) from #okToDelete inner join Aluguer_Equipamento on nSerie = nSerieAluguer) = 0 AND 
+			if (select count(*) from #okToDelete) <> 0 AND
+			(select COUNT(*) from #okToDelete inner join Aluguer_Equipamento on nSerie = nSerieAluguer) = 0 AND 
 			(select COUNT(*) from #okToDelete inner join Aluguer_Promocao on nSerie = nSerieAluguer) = 0
 				delete t1 from Aluguer t1 inner join #okToDelete t2 on t1.nSerie = t2.nSerie;
 
 			else 
 				begin
 					update dbb.Aluguer_Equipamento set hidden = 1
-						from dbb.Aluguer_Equipamento inner join #okToDelete
+						from dbb.Aluguer_Equipamento inner join deleted
 						on nSerieAluguer = nSerie where nSerieAluguer = nSerie;
 
 					update dbb.Aluguer_Promocao set hidden = 1
-						from dbb.Aluguer_Promocao inner join #okToDelete
-						on nSerieAluguer = nSerie where nSerieAluguer = #okToDelete.nSerie;
+						from dbb.Aluguer_Promocao inner join deleted
+						on nSerieAluguer = nSerie where nSerieAluguer = deleted.nSerie;
 
 					update dbb.Aluguer set hidden = 1 
-						from dbb.Aluguer inner join #okToDelete
-						on dbb.Aluguer.nSerie = #okToDelete.nSerie where dbb.Aluguer.nSerie = #okToDelete.nSerie;
+						from dbb.Aluguer inner join deleted
+						on dbb.Aluguer.nSerie = deleted.nSerie where dbb.Aluguer.nSerie = deleted.nSerie;
 				end
 			commit
 		end try
@@ -286,7 +287,7 @@ as
 		
 go
 
--- 2k
+-- 2j
 -- Listar todos os equipamentos livres, para um determinado tempo e tipo
 
 go
@@ -310,7 +311,7 @@ go
 
 
 
--- 2L
+-- 2k
 -- Listar os equipamentos sem alugueres na última semana;
 go
 create procedure ListNaoUsadosSemana

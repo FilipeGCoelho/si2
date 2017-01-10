@@ -1,61 +1,100 @@
--- TESTES DE OPÇÔES CRIADAS
+use SI2;
 
-	-- CLIENTE
+----------2C
 
-	select * from Cliente;
-	select * from dbb.Cliente;
-	select * from aluguer;
-	
-	exec Insert_Cliente 0,'João',123456789,'morada qq';
-	exec Update_Cliente 1,'António',123123123,'quinta da madragoa';
-	exec Remove_Cliente 0;
+-- insert
 
-	-- EQUIPAMENTO
+select * from Cliente
+exec Insert_Cliente 'toze das quintas', 111111111, 'quinta do toze'
+select * from Cliente
 
-	select * from Tipo;
-	Insert into Tipo values ('Canoa','descricao');
+-- update
 
-	select * from Equipamento;
-	select * from Aluguer_Equipamento;
+select * from Cliente
+exec Update_CLiente 1, 'novo nome', 777777777, 'nova morada'
+exec Update_CLiente 3, 'novo nome', 777777777, 'nova morada'
+select * from Cliente
 
-	exec Insert_Equipamento 3,'descrição','Canoa';
-	exec Update_Equipamento 0,'descrição2','Canoa';
-	exec Remove_Equipamento 3;
-	
-	select * from Equipamento;
-	select * from dbb.Equipamento;
-	select * from Aluguer_Equipamento;
+-- remove
+
+select * from Cliente
+exec Remove_Cliente 2
+select * from Cliente
+select * from dbb.Cliente
+
+----------2D
+
+-- insert
+
+select * from Equipamento
+exec Insert_Equipamento 'desc teste', 'nometipo'
+select * from Equipamento
+
+-- update
+
+select * from Equipamento
+exec Update_Equipamento 1, 'toma', 'nometipo'
+select * from Equipamento
+
+-- remove
+
+select * from Equipamento
+exec Remove_Equipamento 1
+select * from Equipamento
+select * from dbb.Equipamento
+
+----------2E
+
+-- insert
+
+select * from Promocao
+exec Insert_Promocao '2016-01-01' , '2018-01-01', 'descPromo teste', 'desconto'
+select * from Promocao
+
+-- update
+
+select * from Promocao
+exec Update_Promocao 1, '2016-01-01' , '2018-01-01', 'descPromo teste', 'desconto'
+select * from Promocao
+
+-- remove
+
+select * from Promocao
+exec Remove_Promocao 1
+select * from Promocao
+select * from dbb.Promocao
+
+----------2F e G
+-- um procedimento usa o outro
+
+select * from Cliente
+select * from Aluguer
+exec Insert_Aluguer_Sem_Cliente 
+	'nome', 123123123, 'morada',
+	'2016-01-01', '2018-01-01', 30, 10, 1
+select * from Cliente
+select * from Aluguer
+select * from Empregado
 
 
-	-- Promoçoes
+----------2H
 
-	select * from Promocao;
-	select * from Aluguer_Equipamento
-	
-	exec Insert_Promocao '01-01-2016', '01-02-2016', 'descrição', 'tempo';
-	exec Update_Promocao 1, '01-01-2015', '01-02-2015', 'descrição2', 'tempo';
-	exec Remove_Promocao 3;
-	
-	select * from Promocao;
-	select * from dbb.Promocao;
-	select * from Aluguer_Equipamento
+select * from Aluguer
+exec Remove_Aluguer 1
+exec Remove_Aluguer 2
+select * from dbb.Aluguer
+select * from dbb.Aluguer_Equipamento
+select * from dbb.Aluguer_Promocao
+-- nota que para o remove 1 escondeu tudo o que estava em aluguer,
+-- aluguer_promocao e aluguer_equipamento
 
+-- para o remove 2 ja apagou pois a data de inicio ainda nao tinha
+-- acontecido e nao tinha nenhuma dependencia noutra tabela
 
-	-- Inserts
-	use si2;
+----------2J
 
-	insert into Empregado values ('ze');
-	insert into Cliente values (null, null, null);
-	insert into Promocao values (GETDATE(), GETDATE(), 'desc', 'tempo');
-	insert into Tipo values ('nometipo', 'desc');
-	insert into Equipamento values ('desc','nometipo');
-	insert into Equipamento values ('desc2','nometipo');
+exec ListEquipamentosLivres 'nometipo', 1
 
-	insert into Aluguer values ('2018-01-01', '2019-01-01', 1, 1, 1, 1);
-	insert into Aluguer values ('2018-01-01', '2019-01-01', 1, 1, 1, 1);
-	insert into Aluguer values (GETDATE(), GETDATE() + 1000, 1, 1, 1, 1);
-	insert into Aluguer_Equipamento values (1, 1);
-	insert into Aluguer_Equipamento values (1, 2);
-	insert into Aluguer_Equipamento values (3, 1);
-	insert into Aluguer_Promocao values (1,1);
-	insert into Preco values (30, 1, 1);
+----------2K
+
+exec ListNaoUsadosSemana
