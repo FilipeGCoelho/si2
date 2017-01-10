@@ -58,7 +58,7 @@ namespace SI2
             {
                 //choose the pretended mode (EF or ADO)
                 Console.Clear();
-                Console.WriteLine("Which mode do you want: \n1.Entity Framework (EF)\n2.ADO.NET\n3.Exit");
+                Console.WriteLine("Which mode do you want: \n1.Entity Framework (EF)\n2.ADO.NET\n\n3.Exit");
 
                 //read answer
                 string answer_mode = Console.ReadLine();
@@ -101,12 +101,20 @@ namespace SI2
           
         public static void Init()
         {
-            operations.Add("e", new OperationInfo("Inserir, remover e actualizar informação de promoções", MethodDB.e_ef, MethodDB.e_ado_net));
+            operations.Add("e1", new OperationInfo("Inserir informação de promoções", MethodDB.e1_ef, MethodDB.e1_ado_net));
+            operations.Add("e2", new OperationInfo("Remover informação de promoções", MethodDB.e2_ef, MethodDB.e2_ado_net));
+            operations.Add("e3", new OperationInfo("Actualizar informação de promoções", MethodDB.e3_ef, MethodDB.e3_ado_net));
+
             operations.Add("f", new OperationInfo("Inserir um aluguer com inserção de um cliente com dados completos", MethodDB.f_ef, MethodDB.f_ado_net));
+
             operations.Add("g", new OperationInfo("Inserir um aluguer usando um cliente existente", MethodDB.g_ef, MethodDB.g_ado_net));
+
             operations.Add("h", new OperationInfo("Remover um Aluguer",MethodDB.h_ef,MethodDB.h_ado_net));
+
             operations.Add("i", new OperationInfo("Efectuar alterações de preçário", MethodDB.i_ef, MethodDB.i_ado_net));
+
             operations.Add("j", new OperationInfo("Listar todos os equipamentos livres, para um determinado tempo e tipo", MethodDB.j_ef, MethodDB.j_ado_net));
+
             operations.Add("k", new OperationInfo("Listar os equipamentos sem alugueres na última semana", MethodDB.k_ef, MethodDB.k_ado_net));
         }
     }
@@ -114,7 +122,6 @@ namespace SI2
 
     public delegate void MethodDelegate();
     
-
     class OperationInfo
     {
         public string phrase;
@@ -147,18 +154,9 @@ namespace SI2
         }
 
         //Inserir, remover e actualizar informação de promoções
-        public static void e_ef()
-        {
-
-        }
-
         public static void e_ado_net()
-        {
-
-        }
 
         public static void e_ado_insert()
-        {
             SqlCommand command = new SqlCommand("Insert_Promocao", Connection);
             command.CommandType = CommandType.StoredProcedure;
             DateTime bixo= new DateTime(1999, 99, 99);
@@ -173,13 +171,8 @@ namespace SI2
             SqlParameter dataFim = new SqlParameter("@dataFim", SqlDbType.Date);
             SqlParameter descricao = new SqlParameter("@descricao", SqlDbType.VarChar);
             SqlParameter tipo = new SqlParameter("@tipo", SqlDbType.VarChar);
-        }
-
         public static void e_ado_remove()
-        {
             new SqlCommand("Remove_Promocao", Connection).ExecuteNonQuery();                        
-        }
-
         public static void e_ado_update()
         {
             new SqlCommand("Update_Promocao", Connection).ExecuteNonQuery();                        
