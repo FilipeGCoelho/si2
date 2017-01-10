@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Reflection;
@@ -12,6 +13,7 @@ namespace SI2
     {
         static void Main(string[] args)
         {
+            MethodDB.Init();
             App.Init();
             App.Run();
         }
@@ -67,10 +69,40 @@ namespace SI2
 
     class MethodDB
     {
+        private static readonly string ConnectionString = "user id=si2;password=si2;database=SI2;";
+        private static readonly SqlConnection Connection = new SqlConnection(ConnectionString);
+
+        public static void Init()
+        {
+            try
+            {
+                Connection.Open();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
+
         //Inserir, remover e actualizar informação de promoções
         public static void e_ef()
         {
 
+        }
+
+        public static void e_ef_insert()
+        {
+            new SqlCommand("Insert_Promocao", Connection).ExecuteNonQuery();            
+        }
+
+        public static void e_ef_remove()
+        {
+            new SqlCommand("Remove_Promocao", Connection).ExecuteNonQuery();                        
+        }
+
+        public static void e_ef_update()
+        {
+            new SqlCommand("Update_Promocao", Connection).ExecuteNonQuery();                        
         }
 
         public static void e_ado_net()
