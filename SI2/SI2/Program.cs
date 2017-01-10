@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -151,24 +152,37 @@ namespace SI2
 
         }
 
-        public static void e_ef_insert()
+        public static void e_ado_net()
         {
-            new SqlCommand("Insert_Promocao", Connection).ExecuteNonQuery();            
+
         }
 
-        public static void e_ef_remove()
+        public static void e_ado_insert()
+        {
+            SqlCommand command = new SqlCommand("Insert_Promocao", Connection);
+            command.CommandType = CommandType.StoredProcedure;
+            DateTime bixo= new DateTime(1999, 99, 99);
+//          @dataInicio DATE,
+//	        @dataFim DATE,
+//	        @descricao VARCHAR(128),
+//	        @tipo VARCHAR(8)
+
+            SqlParameter dataInicio = new SqlParameter("@dataInicio", SqlDbType.Date);
+            dataInicio.Value = bixo;
+            command.Parameters.Add(dataInicio);
+            SqlParameter dataFim = new SqlParameter("@dataFim", SqlDbType.Date);
+            SqlParameter descricao = new SqlParameter("@descricao", SqlDbType.VarChar);
+            SqlParameter tipo = new SqlParameter("@tipo", SqlDbType.VarChar);
+        }
+
+        public static void e_ado_remove()
         {
             new SqlCommand("Remove_Promocao", Connection).ExecuteNonQuery();                        
         }
 
-        public static void e_ef_update()
+        public static void e_ado_update()
         {
             new SqlCommand("Update_Promocao", Connection).ExecuteNonQuery();                        
-        }
-
-        public static void e_ado_net()
-        {
-
         }
 
         //Inserir um aluguer com inserção de um cliente com dados completos
