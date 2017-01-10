@@ -1,1 +1,7 @@
 D:\DRIVE\ISEL\SEMESTRE_5\SI2\trabalhos\2\SI2\SI2\bin\Debug\SI2.exe.config
+D:\DRIVE\ISEL\SEMESTRE_5\SI2\trabalhos\si2\SI2\SI2\bin\Debug\SI2.exe.config
+D:\DRIVE\ISEL\SEMESTRE_5\SI2\trabalhos\si2\SI2\SI2\bin\Debug\SI2.exe
+D:\DRIVE\ISEL\SEMESTRE_5\SI2\trabalhos\si2\SI2\SI2\bin\Debug\SI2.pdb
+D:\DRIVE\ISEL\SEMESTRE_5\SI2\trabalhos\si2\SI2\SI2\obj\Debug\SI2.csprojResolveAssemblyReference.cache
+D:\DRIVE\ISEL\SEMESTRE_5\SI2\trabalhos\si2\SI2\SI2\obj\Debug\SI2.exe
+D:\DRIVE\ISEL\SEMESTRE_5\SI2\trabalhos\si2\SI2\SI2\obj\Debug\SI2.pdb

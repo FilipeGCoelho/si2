@@ -12,7 +12,8 @@ namespace SI2
     {
         static void Main(string[] args)
         {
-
+            App.Init();
+            App.Run();
         }
     }
 
@@ -22,17 +23,27 @@ namespace SI2
 
         public static void Run()
         {
-
+            Menu();
         }
 
         private static void Menu()
         {
-            Console.WriteLine(operations["h"].phrase);
+            foreach (var current in operations)
+            {
+                Console.WriteLine(current.Key + '.' + current.Value.phrase);
+            }
         }
+
 
         public static void Init()
         {
-            operations.Add("h",new OperationInfo("Remover um Aluguer",MethodDB.h_ef,MethodDB.h_ado_net));
+            operations.Add("e", new OperationInfo("Inserir, remover e actualizar informação de promoções", MethodDB.e_ef, MethodDB.e_ado_net));
+            operations.Add("f", new OperationInfo("Inserir um aluguer com inserção de um cliente com dados completos", MethodDB.f_ef, MethodDB.f_ado_net));
+            operations.Add("g", new OperationInfo("Inserir um aluguer usando um cliente existente", MethodDB.g_ef, MethodDB.g_ado_net));
+            operations.Add("h", new OperationInfo("Remover um Aluguer",MethodDB.h_ef,MethodDB.h_ado_net));
+            operations.Add("i", new OperationInfo("Efectuar alterações de preçário", MethodDB.i_ef, MethodDB.i_ado_net));
+            operations.Add("j", new OperationInfo("Listar todos os equipamentos livres, para um determinado tempo e tipo", MethodDB.j_ef, MethodDB.j_ado_net));
+            operations.Add("k", new OperationInfo("Listar os equipamentos sem alugueres na última semana", MethodDB.k_ef, MethodDB.k_ado_net));
         }
     }
 
@@ -56,6 +67,39 @@ namespace SI2
 
     class MethodDB
     {
+        //Inserir, remover e actualizar informação de promoções
+        public static void e_ef()
+        {
+
+        }
+
+        public static void e_ado_net()
+        {
+
+        }
+
+        //Inserir um aluguer com inserção de um cliente com dados completos
+        public static void f_ef()
+        {
+
+        }
+
+        public static void f_ado_net()
+        {
+
+        }
+
+        //Inserir um aluguer usando um cliente existente;
+        public static void g_ef()
+        {
+
+        }
+
+        public static void g_ado_net()
+        {
+
+        }
+
         //Remover Aluguer
         public static void h_ef()
         {
@@ -63,6 +107,39 @@ namespace SI2
         }
 
         public static void h_ado_net()
+        {
+
+        }
+
+        //Efectuar alterações de preçário
+        public static void i_ef()
+        {
+
+        }
+
+        public static void i_ado_net()
+        {
+
+        }
+
+        //Listar todos os equipamentos livres, para um determinado tempo e tipo
+        public static void j_ef()
+        {
+
+        }
+
+        public static void j_ado_net()
+        {
+
+        }
+
+        //Listar todos os equipamentos livres, para um determinado tempo e tipo
+        public static void k_ef()
+        {
+
+        }
+
+        public static void k_ado_net()
         {
 
         }
