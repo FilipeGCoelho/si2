@@ -42,19 +42,31 @@ namespace SI2
             command.Parameters.AddWithValue("@dataInicio", AuxiliaryMethods.GetVariable("Data de Inicio"));
             command.Parameters.AddWithValue("@dataFim", AuxiliaryMethods.GetVariable("Data de Fim"));
             command.Parameters.AddWithValue("@descricao", AuxiliaryMethods.GetVariable("Descricao"));
-            command.Parameters.AddWithValue("@tipo", AuxiliaryMethods.GetVariable("Tipo"));
+            command.Parameters.AddWithValue("@tipo", AuxiliaryMethods.GetVariable("Tipo", "tempo ou desconto"));
             command.ExecuteNonQuery();
 
         }
 
         public static void e_ado_remove()
         {
-            new SqlCommand("Remove_Promocao", Connection).ExecuteNonQuery();
+            SqlCommand command = new SqlCommand("Remove_Promocao", Connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@id", AuxiliaryMethods.GetVariable("ID"));
+            command.ExecuteNonQuery();
         }
 
         public static void e_ado_update()
         {
-            new SqlCommand("Update_Promocao", Connection).ExecuteNonQuery();
+            SqlCommand command = new SqlCommand("Insert_Promocao", Connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@id", AuxiliaryMethods.GetVariable("ID"));
+            command.Parameters.AddWithValue("@dataInicio", AuxiliaryMethods.GetVariable("Data de Inicio"));
+            command.Parameters.AddWithValue("@dataFim", AuxiliaryMethods.GetVariable("Data de Fim"));
+            command.Parameters.AddWithValue("@descricao", AuxiliaryMethods.GetVariable("Descricao"));
+            command.Parameters.AddWithValue("@tipo", AuxiliaryMethods.GetVariable("Tipo", "tempo ou desconto"));
+            command.ExecuteNonQuery();
         }
 
         //Inserir um aluguer com inserção de um cliente com dados completos

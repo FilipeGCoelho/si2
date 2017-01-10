@@ -10,18 +10,14 @@ namespace SI2
     {
         public static string GetVariable(string name)
         {
-            Console.Clear();
-            Console.WriteLine("REQUESTED VALUE:\n\n" + name + ": ");
+            Console.WriteLine(name + ": ");
 
             return Console.ReadLine();
         }
 
         public static string GetVariable(string name, string instructions)
         {
-            Console.Clear();
-            Console.WriteLine("REQUESTED VALUE:\n");
-            Console.WriteLine("Instructions: " + instructions + "\n");
-            Console.WriteLine("\n" + name + ": ");
+            Console.WriteLine(name + "(" + instructions + "): ");
 
             return Console.ReadLine();
         }
