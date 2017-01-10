@@ -10,14 +10,14 @@ namespace SI2
     {
         public static string GetVariable(string name)
         {
-            Console.WriteLine(name + ": ");
+            Console.Write(name + ": ");
 
             return Console.ReadLine();
         }
 
         public static string GetVariable(string name, string instructions)
         {
-            Console.WriteLine(name + "(" + instructions + "): ");
+            Console.Write(name + "(" + instructions + "): ");
 
             return Console.ReadLine();
         }
