@@ -39,15 +39,12 @@ namespace SI2
             SqlCommand command = new SqlCommand("Insert_Promocao", Connection);
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@dataInicio","1999-01-01");
-            command.Parameters.AddWithValue("@dataFim","1999-01-02");
-            command.Parameters.AddWithValue("@descricao","tralha");
-            command.Parameters.AddWithValue("@tipo","tempo");
+            command.Parameters.AddWithValue("@dataInicio", AuxiliaryMethods.GetVariable("Data de Inicio"));
+            command.Parameters.AddWithValue("@dataFim", AuxiliaryMethods.GetVariable("Data de Fim"));
+            command.Parameters.AddWithValue("@descricao", AuxiliaryMethods.GetVariable("Descricao"));
+            command.Parameters.AddWithValue("@tipo", AuxiliaryMethods.GetVariable("Tipo"));
             command.ExecuteNonQuery();
 
-//            command.Parameters.Add(new SqlParameter("@dataFim", SqlDbType.Date).Value = "1999-01-01");
-//            command.Parameters.Add(new SqlParameter("@descricao", SqlDbType.VarChar).Value = "tralha");
-//            command.Parameters.Add(new SqlParameter("@tipo", SqlDbType.VarChar).Value = "tipotralha");
         }
 
         public static void e_ado_remove()
