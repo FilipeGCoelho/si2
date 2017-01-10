@@ -28,10 +28,6 @@ namespace SI2
         {
 
         }
-        public static void e_ado_net()
-        {
-
-        }
 
         public static void e_ado_insert()
         {

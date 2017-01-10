@@ -1,0 +1,620 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SI2_Data" targetNamespace="http://tempuri.org/SI2_Data.xsd" xmlns:mstns="http://tempuri.org/SI2_Data.xsd" xmlns="http://tempuri.org/SI2_Data.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SI2" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SI2 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SI2.Properties.Settings.GlobalReference.Default.SI2" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Aluguer1TableAdapter" GeneratorDataComponentClassName="Aluguer1TableAdapter" Name="Aluguer1" UserDataComponentName="Aluguer1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Aluguer" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT nSerie, dataInicio, dataFim, tipo, preco, nEmpregado, nCliente FROM dbo.Aluguer</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="nSerie" DataSetColumn="nSerie" />
+              <Mapping SourceColumn="dataInicio" DataSetColumn="dataInicio" />
+              <Mapping SourceColumn="dataFim" DataSetColumn="dataFim" />
+              <Mapping SourceColumn="tipo" DataSetColumn="tipo" />
+              <Mapping SourceColumn="preco" DataSetColumn="preco" />
+              <Mapping SourceColumn="nEmpregado" DataSetColumn="nEmpregado" />
+              <Mapping SourceColumn="nCliente" DataSetColumn="nCliente" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Aluguer_Equipamento1TableAdapter" GeneratorDataComponentClassName="Aluguer_Equipamento1TableAdapter" Name="Aluguer_Equipamento1" UserDataComponentName="Aluguer_Equipamento1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Aluguer_Equipamento" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT nSerieAluguer, codigoEquipamento FROM dbo.Aluguer_Equipamento</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="nSerieAluguer" DataSetColumn="nSerieAluguer" />
+              <Mapping SourceColumn="codigoEquipamento" DataSetColumn="codigoEquipamento" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Aluguer_Promocao1TableAdapter" GeneratorDataComponentClassName="Aluguer_Promocao1TableAdapter" Name="Aluguer_Promocao1" UserDataComponentName="Aluguer_Promocao1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Aluguer_Promocao" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT nSerieAluguer, idPromocao FROM dbo.Aluguer_Promocao</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="nSerieAluguer" DataSetColumn="nSerieAluguer" />
+              <Mapping SourceColumn="idPromocao" DataSetColumn="idPromocao" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Cliente1TableAdapter" GeneratorDataComponentClassName="Cliente1TableAdapter" Name="Cliente1" UserDataComponentName="Cliente1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Cliente" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT numero, nome, nif, morada FROM dbo.Cliente</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="numero" DataSetColumn="numero" />
+              <Mapping SourceColumn="nome" DataSetColumn="nome" />
+              <Mapping SourceColumn="nif" DataSetColumn="nif" />
+              <Mapping SourceColumn="morada" DataSetColumn="morada" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Empregado1TableAdapter" GeneratorDataComponentClassName="Empregado1TableAdapter" Name="Empregado1" UserDataComponentName="Empregado1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Empregado" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT numero, nome FROM dbo.Empregado</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="numero" DataSetColumn="numero" />
+              <Mapping SourceColumn="nome" DataSetColumn="nome" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Equipamento1TableAdapter" GeneratorDataComponentClassName="Equipamento1TableAdapter" Name="Equipamento1" UserDataComponentName="Equipamento1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Equipamento" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT codigo, descricao, tipo FROM dbo.Equipamento</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="codigo" DataSetColumn="codigo" />
+              <Mapping SourceColumn="descricao" DataSetColumn="descricao" />
+              <Mapping SourceColumn="tipo" DataSetColumn="tipo" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Preco1TableAdapter" GeneratorDataComponentClassName="Preco1TableAdapter" Name="Preco1" UserDataComponentName="Preco1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Preco" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT validade, valor, idEquipamento FROM dbo.Preco</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="validade" DataSetColumn="validade" />
+              <Mapping SourceColumn="valor" DataSetColumn="valor" />
+              <Mapping SourceColumn="idEquipamento" DataSetColumn="idEquipamento" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Promocao1TableAdapter" GeneratorDataComponentClassName="Promocao1TableAdapter" Name="Promocao1" UserDataComponentName="Promocao1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Promocao" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT id, dataInicio, dataFim, descricao, tipo FROM dbo.Promocao</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="dataInicio" DataSetColumn="dataInicio" />
+              <Mapping SourceColumn="dataFim" DataSetColumn="dataFim" />
+              <Mapping SourceColumn="descricao" DataSetColumn="descricao" />
+              <Mapping SourceColumn="tipo" DataSetColumn="tipo" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Tipo1TableAdapter" GeneratorDataComponentClassName="Tipo1TableAdapter" Name="Tipo1" UserDataComponentName="Tipo1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Tipo" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT nome, descricao FROM dbo.Tipo</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="nome" DataSetColumn="nome" />
+              <Mapping SourceColumn="descricao" DataSetColumn="descricao" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ListEquipamentosLivresTableAdapter" GeneratorDataComponentClassName="ListEquipamentosLivresTableAdapter" Name="ListEquipamentosLivres" UserDataComponentName="ListEquipamentosLivresTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.ListEquipamentosLivres" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.ListEquipamentosLivres</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="varchar" DbType="AnsiString" Direction="Input" ParameterName="@tipo" Precision="0" ProviderType="VarChar" Scale="0" Size="128" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@tempo" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="codigo" DataSetColumn="codigo" />
+              <Mapping SourceColumn="descricao" DataSetColumn="descricao" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ListNaoUsadosSemanaTableAdapter" GeneratorDataComponentClassName="ListNaoUsadosSemanaTableAdapter" Name="ListNaoUsadosSemana" UserDataComponentName="ListNaoUsadosSemanaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.ListNaoUsadosSemana" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.ListNaoUsadosSemana</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="codigo" DataSetColumn="codigo" />
+              <Mapping SourceColumn="descricao" DataSetColumn="descricao" />
+              <Mapping SourceColumn="tipo" DataSetColumn="tipo" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources>
+          <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Add_Preco" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="Add_Preco" MethodsParameterType="CLR" Modifier="Public" Name="Add_Preco" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Add_Preco">
+            <SelectCommand>
+              <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                <CommandText>dbo.Add_Preco</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idEquipamento" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@validade" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="money" DbType="Currency" Direction="Input" ParameterName="@valor" Precision="19" ProviderType="Money" Scale="4" Size="8" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+          <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Insert_Aluguer_Com_Cliente" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="Insert_Aluguer_Com_Cliente" MethodsParameterType="CLR" Modifier="Public" Name="Insert_Aluguer_Com_Cliente" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Insert_Aluguer_Com_Cliente">
+            <SelectCommand>
+              <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                <CommandText>dbo.Insert_Aluguer_Com_Cliente</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idCliente" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@dataInicio" Precision="23" ProviderType="DateTime" Scale="3" Size="8" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="date" DbType="Date" Direction="Input" ParameterName="@dataFim" Precision="10" ProviderType="Date" Scale="0" Size="3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@tipo" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="money" DbType="Currency" Direction="Input" ParameterName="@preco" Precision="19" ProviderType="Money" Scale="4" Size="8" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@nEmpregado" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+          <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Insert_Aluguer_Sem_Cliente" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="Insert_Aluguer_Sem_Cliente" MethodsParameterType="CLR" Modifier="Public" Name="Insert_Aluguer_Sem_Cliente" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="Insert_Aluguer_Sem_Cliente">
+            <SelectCommand>
+              <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                <CommandText>dbo.Insert_Aluguer_Sem_Cliente</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="varchar" DbType="AnsiString" Direction="Input" ParameterName="@nomeCliente" Precision="0" ProviderType="VarChar" Scale="0" Size="64" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="numeric" DbType="Decimal" Direction="Input" ParameterName="@nifCliente" Precision="9" ProviderType="Decimal" Scale="0" Size="5" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="varchar" DbType="AnsiString" Direction="Input" ParameterName="@moradaCliente" Precision="0" ProviderType="VarChar" Scale="0" Size="64" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@dataInicio" Precision="23" ProviderType="DateTime" Scale="3" Size="8" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="date" DbType="Date" Direction="Input" ParameterName="@dataFim" Precision="10" ProviderType="Date" Scale="0" Size="3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@tipo" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="money" DbType="Currency" Direction="Input" ParameterName="@preco" Precision="19" ProviderType="Money" Scale="4" Size="8" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@nEmpregado" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+          <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Insert_Cliente" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="Insert_Cliente" MethodsParameterType="CLR" Modifier="Public" Name="Insert_Cliente" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="Insert_Cliente">
+            <SelectCommand>
+              <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                <CommandText>dbo.Insert_Cliente</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="varchar" DbType="AnsiString" Direction="Input" ParameterName="@nome" Precision="0" ProviderType="VarChar" Scale="0" Size="64" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="numeric" DbType="Decimal" Direction="Input" ParameterName="@nif" Precision="9" ProviderType="Decimal" Scale="0" Size="5" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="varchar" DbType="AnsiString" Direction="Input" ParameterName="@morada" Precision="0" ProviderType="VarChar" Scale="0" Size="64" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+          <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Insert_Equipamento" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="Insert_Equipamento" MethodsParameterType="CLR" Modifier="Public" Name="Insert_Equipamento" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="Insert_Equipamento">
+            <SelectCommand>
+              <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                <CommandText>dbo.Insert_Equipamento</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="varchar" DbType="AnsiString" Direction="Input" ParameterName="@Descricao" Precision="0" ProviderType="VarChar" Scale="0" Size="128" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="varchar" DbType="AnsiString" Direction="Input" ParameterName="@tipo" Precision="0" ProviderType="VarChar" Scale="0" Size="64" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+          <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Insert_Promocao" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="Insert_Promocao" MethodsParameterType="CLR" Modifier="Public" Name="Insert_Promocao" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="Insert_Promocao">
+            <SelectCommand>
+              <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                <CommandText>dbo.Insert_Promocao</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="date" DbType="Date" Direction="Input" ParameterName="@dataInicio" Precision="10" ProviderType="Date" Scale="0" Size="3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="date" DbType="Date" Direction="Input" ParameterName="@dataFim" Precision="10" ProviderType="Date" Scale="0" Size="3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="varchar" DbType="AnsiString" Direction="Input" ParameterName="@descricao" Precision="0" ProviderType="VarChar" Scale="0" Size="128" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="varchar" DbType="AnsiString" Direction="Input" ParameterName="@tipo" Precision="0" ProviderType="VarChar" Scale="0" Size="8" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+          <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Remove_Aluguer" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="Remove_Aluguer" MethodsParameterType="CLR" Modifier="Public" Name="Remove_Aluguer" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="Remove_Aluguer">
+            <SelectCommand>
+              <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                <CommandText>dbo.Remove_Aluguer</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@nSerie" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+          <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Remove_Cliente" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="Remove_Cliente" MethodsParameterType="CLR" Modifier="Public" Name="Remove_Cliente" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="Remove_Cliente">
+            <SelectCommand>
+              <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                <CommandText>dbo.Remove_Cliente</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@numero" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+          <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Remove_Equipamento" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="Remove_Equipamento" MethodsParameterType="CLR" Modifier="Public" Name="Remove_Equipamento" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy8" UserSourceName="Remove_Equipamento">
+            <SelectCommand>
+              <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                <CommandText>dbo.Remove_Equipamento</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@codigo" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+          <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Remove_Promocao" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="Remove_Promocao" MethodsParameterType="CLR" Modifier="Public" Name="Remove_Promocao" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy9" UserSourceName="Remove_Promocao">
+            <SelectCommand>
+              <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                <CommandText>dbo.Remove_Promocao</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@id" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+          <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Update_Cliente" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="Update_Cliente" MethodsParameterType="CLR" Modifier="Public" Name="Update_Cliente" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy10" UserSourceName="Update_Cliente">
+            <SelectCommand>
+              <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                <CommandText>dbo.Update_Cliente</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@numero" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="varchar" DbType="AnsiString" Direction="Input" ParameterName="@nome" Precision="0" ProviderType="VarChar" Scale="0" Size="64" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="numeric" DbType="Decimal" Direction="Input" ParameterName="@nif" Precision="9" ProviderType="Decimal" Scale="0" Size="5" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="varchar" DbType="AnsiString" Direction="Input" ParameterName="@morada" Precision="0" ProviderType="VarChar" Scale="0" Size="64" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+          <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Update_Equipamento" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="Update_Equipamento" MethodsParameterType="CLR" Modifier="Public" Name="Update_Equipamento" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy11" UserSourceName="Update_Equipamento">
+            <SelectCommand>
+              <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                <CommandText>dbo.Update_Equipamento</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@codigo" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="varchar" DbType="AnsiString" Direction="Input" ParameterName="@Descricao" Precision="0" ProviderType="VarChar" Scale="0" Size="128" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="varchar" DbType="AnsiString" Direction="Input" ParameterName="@tipo" Precision="0" ProviderType="VarChar" Scale="0" Size="64" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+          <DbSource ConnectionRef="SI2 (Settings)" DbObjectName="SI2.dbo.Update_Promocao" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="Update_Promocao" MethodsParameterType="CLR" Modifier="Public" Name="Update_Promocao" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy12" UserSourceName="Update_Promocao">
+            <SelectCommand>
+              <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                <CommandText>dbo.Update_Promocao</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@id" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="date" DbType="Date" Direction="Input" ParameterName="@dataInicio" Precision="10" ProviderType="Date" Scale="0" Size="3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="date" DbType="Date" Direction="Input" ParameterName="@dataFim" Precision="10" ProviderType="Date" Scale="0" Size="3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="varchar" DbType="AnsiString" Direction="Input" ParameterName="@descricao" Precision="0" ProviderType="VarChar" Scale="0" Size="128" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="varchar" DbType="AnsiString" Direction="Input" ParameterName="@tipo" Precision="0" ProviderType="VarChar" Scale="0" Size="8" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SI2_Data" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="SI2_Data" msprop:Generator_UserDSName="SI2_Data">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Aluguer1" msprop:Generator_TableClassName="Aluguer1DataTable" msprop:Generator_TableVarName="tableAluguer1" msprop:Generator_TablePropName="Aluguer1" msprop:Generator_RowDeletingName="Aluguer1RowDeleting" msprop:Generator_RowChangingName="Aluguer1RowChanging" msprop:Generator_RowEvHandlerName="Aluguer1RowChangeEventHandler" msprop:Generator_RowDeletedName="Aluguer1RowDeleted" msprop:Generator_UserTableName="Aluguer1" msprop:Generator_RowChangedName="Aluguer1RowChanged" msprop:Generator_RowEvArgName="Aluguer1RowChangeEvent" msprop:Generator_RowClassName="Aluguer1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nSerie" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnnSerie" msprop:Generator_ColumnPropNameInRow="nSerie" msprop:Generator_ColumnPropNameInTable="nSerieColumn" msprop:Generator_UserColumnName="nSerie" type="xs:int" />
+              <xs:element name="dataInicio" msprop:Generator_ColumnVarNameInTable="columndataInicio" msprop:Generator_ColumnPropNameInRow="dataInicio" msprop:Generator_ColumnPropNameInTable="dataInicioColumn" msprop:Generator_UserColumnName="dataInicio" type="xs:dateTime" />
+              <xs:element name="dataFim" msprop:Generator_ColumnVarNameInTable="columndataFim" msprop:Generator_ColumnPropNameInRow="dataFim" msprop:Generator_ColumnPropNameInTable="dataFimColumn" msprop:Generator_UserColumnName="dataFim" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="tipo" msprop:Generator_ColumnVarNameInTable="columntipo" msprop:Generator_ColumnPropNameInRow="tipo" msprop:Generator_ColumnPropNameInTable="tipoColumn" msprop:Generator_UserColumnName="tipo" type="xs:int" />
+              <xs:element name="preco" msprop:Generator_ColumnVarNameInTable="columnpreco" msprop:Generator_ColumnPropNameInRow="preco" msprop:Generator_ColumnPropNameInTable="precoColumn" msprop:Generator_UserColumnName="preco" type="xs:decimal" />
+              <xs:element name="nEmpregado" msprop:Generator_ColumnVarNameInTable="columnnEmpregado" msprop:Generator_ColumnPropNameInRow="nEmpregado" msprop:Generator_ColumnPropNameInTable="nEmpregadoColumn" msprop:Generator_UserColumnName="nEmpregado" type="xs:int" minOccurs="0" />
+              <xs:element name="nCliente" msprop:Generator_ColumnVarNameInTable="columnnCliente" msprop:Generator_ColumnPropNameInRow="nCliente" msprop:Generator_ColumnPropNameInTable="nClienteColumn" msprop:Generator_UserColumnName="nCliente" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Aluguer_Equipamento1" msprop:Generator_TableClassName="Aluguer_Equipamento1DataTable" msprop:Generator_TableVarName="tableAluguer_Equipamento1" msprop:Generator_TablePropName="Aluguer_Equipamento1" msprop:Generator_RowDeletingName="Aluguer_Equipamento1RowDeleting" msprop:Generator_RowChangingName="Aluguer_Equipamento1RowChanging" msprop:Generator_RowEvHandlerName="Aluguer_Equipamento1RowChangeEventHandler" msprop:Generator_RowDeletedName="Aluguer_Equipamento1RowDeleted" msprop:Generator_UserTableName="Aluguer_Equipamento1" msprop:Generator_RowChangedName="Aluguer_Equipamento1RowChanged" msprop:Generator_RowEvArgName="Aluguer_Equipamento1RowChangeEvent" msprop:Generator_RowClassName="Aluguer_Equipamento1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nSerieAluguer" msprop:Generator_ColumnVarNameInTable="columnnSerieAluguer" msprop:Generator_ColumnPropNameInRow="nSerieAluguer" msprop:Generator_ColumnPropNameInTable="nSerieAluguerColumn" msprop:Generator_UserColumnName="nSerieAluguer" type="xs:int" />
+              <xs:element name="codigoEquipamento" msprop:Generator_ColumnVarNameInTable="columncodigoEquipamento" msprop:Generator_ColumnPropNameInRow="codigoEquipamento" msprop:Generator_ColumnPropNameInTable="codigoEquipamentoColumn" msprop:Generator_UserColumnName="codigoEquipamento" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Aluguer_Promocao1" msprop:Generator_TableClassName="Aluguer_Promocao1DataTable" msprop:Generator_TableVarName="tableAluguer_Promocao1" msprop:Generator_TablePropName="Aluguer_Promocao1" msprop:Generator_RowDeletingName="Aluguer_Promocao1RowDeleting" msprop:Generator_RowChangingName="Aluguer_Promocao1RowChanging" msprop:Generator_RowEvHandlerName="Aluguer_Promocao1RowChangeEventHandler" msprop:Generator_RowDeletedName="Aluguer_Promocao1RowDeleted" msprop:Generator_UserTableName="Aluguer_Promocao1" msprop:Generator_RowChangedName="Aluguer_Promocao1RowChanged" msprop:Generator_RowEvArgName="Aluguer_Promocao1RowChangeEvent" msprop:Generator_RowClassName="Aluguer_Promocao1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nSerieAluguer" msprop:Generator_ColumnVarNameInTable="columnnSerieAluguer" msprop:Generator_ColumnPropNameInRow="nSerieAluguer" msprop:Generator_ColumnPropNameInTable="nSerieAluguerColumn" msprop:Generator_UserColumnName="nSerieAluguer" type="xs:int" />
+              <xs:element name="idPromocao" msprop:Generator_ColumnVarNameInTable="columnidPromocao" msprop:Generator_ColumnPropNameInRow="idPromocao" msprop:Generator_ColumnPropNameInTable="idPromocaoColumn" msprop:Generator_UserColumnName="idPromocao" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Cliente1" msprop:Generator_TableClassName="Cliente1DataTable" msprop:Generator_TableVarName="tableCliente1" msprop:Generator_TablePropName="Cliente1" msprop:Generator_RowDeletingName="Cliente1RowDeleting" msprop:Generator_RowChangingName="Cliente1RowChanging" msprop:Generator_RowEvHandlerName="Cliente1RowChangeEventHandler" msprop:Generator_RowDeletedName="Cliente1RowDeleted" msprop:Generator_UserTableName="Cliente1" msprop:Generator_RowChangedName="Cliente1RowChanged" msprop:Generator_RowEvArgName="Cliente1RowChangeEvent" msprop:Generator_RowClassName="Cliente1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="numero" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnnumero" msprop:Generator_ColumnPropNameInRow="numero" msprop:Generator_ColumnPropNameInTable="numeroColumn" msprop:Generator_UserColumnName="numero" type="xs:int" />
+              <xs:element name="nome" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_UserColumnName="nome" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="64" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nif" msprop:Generator_ColumnVarNameInTable="columnnif" msprop:Generator_ColumnPropNameInRow="nif" msprop:Generator_ColumnPropNameInTable="nifColumn" msprop:Generator_UserColumnName="nif" type="xs:decimal" minOccurs="0" />
+              <xs:element name="morada" msprop:Generator_ColumnVarNameInTable="columnmorada" msprop:Generator_ColumnPropNameInRow="morada" msprop:Generator_ColumnPropNameInTable="moradaColumn" msprop:Generator_UserColumnName="morada" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="64" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Empregado1" msprop:Generator_TableClassName="Empregado1DataTable" msprop:Generator_TableVarName="tableEmpregado1" msprop:Generator_TablePropName="Empregado1" msprop:Generator_RowDeletingName="Empregado1RowDeleting" msprop:Generator_RowChangingName="Empregado1RowChanging" msprop:Generator_RowEvHandlerName="Empregado1RowChangeEventHandler" msprop:Generator_RowDeletedName="Empregado1RowDeleted" msprop:Generator_UserTableName="Empregado1" msprop:Generator_RowChangedName="Empregado1RowChanged" msprop:Generator_RowEvArgName="Empregado1RowChangeEvent" msprop:Generator_RowClassName="Empregado1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="numero" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnnumero" msprop:Generator_ColumnPropNameInRow="numero" msprop:Generator_ColumnPropNameInTable="numeroColumn" msprop:Generator_UserColumnName="numero" type="xs:int" />
+              <xs:element name="nome" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_UserColumnName="nome">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Equipamento1" msprop:Generator_TableClassName="Equipamento1DataTable" msprop:Generator_TableVarName="tableEquipamento1" msprop:Generator_TablePropName="Equipamento1" msprop:Generator_RowDeletingName="Equipamento1RowDeleting" msprop:Generator_RowChangingName="Equipamento1RowChanging" msprop:Generator_RowEvHandlerName="Equipamento1RowChangeEventHandler" msprop:Generator_RowDeletedName="Equipamento1RowDeleted" msprop:Generator_UserTableName="Equipamento1" msprop:Generator_RowChangedName="Equipamento1RowChanged" msprop:Generator_RowEvArgName="Equipamento1RowChangeEvent" msprop:Generator_RowClassName="Equipamento1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="codigo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columncodigo" msprop:Generator_ColumnPropNameInRow="codigo" msprop:Generator_ColumnPropNameInTable="codigoColumn" msprop:Generator_UserColumnName="codigo" type="xs:int" />
+              <xs:element name="descricao" msprop:Generator_ColumnVarNameInTable="columndescricao" msprop:Generator_ColumnPropNameInRow="descricao" msprop:Generator_ColumnPropNameInTable="descricaoColumn" msprop:Generator_UserColumnName="descricao">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tipo" msprop:Generator_ColumnVarNameInTable="columntipo" msprop:Generator_ColumnPropNameInRow="tipo" msprop:Generator_ColumnPropNameInTable="tipoColumn" msprop:Generator_UserColumnName="tipo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="64" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Preco1" msprop:Generator_TableClassName="Preco1DataTable" msprop:Generator_TableVarName="tablePreco1" msprop:Generator_TablePropName="Preco1" msprop:Generator_RowDeletingName="Preco1RowDeleting" msprop:Generator_RowChangingName="Preco1RowChanging" msprop:Generator_RowEvHandlerName="Preco1RowChangeEventHandler" msprop:Generator_RowDeletedName="Preco1RowDeleted" msprop:Generator_UserTableName="Preco1" msprop:Generator_RowChangedName="Preco1RowChanged" msprop:Generator_RowEvArgName="Preco1RowChangeEvent" msprop:Generator_RowClassName="Preco1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="validade" msprop:Generator_ColumnVarNameInTable="columnvalidade" msprop:Generator_ColumnPropNameInRow="validade" msprop:Generator_ColumnPropNameInTable="validadeColumn" msprop:Generator_UserColumnName="validade" type="xs:int" />
+              <xs:element name="valor" msprop:Generator_ColumnVarNameInTable="columnvalor" msprop:Generator_ColumnPropNameInRow="valor" msprop:Generator_ColumnPropNameInTable="valorColumn" msprop:Generator_UserColumnName="valor" type="xs:decimal" />
+              <xs:element name="idEquipamento" msprop:Generator_ColumnVarNameInTable="columnidEquipamento" msprop:Generator_ColumnPropNameInRow="idEquipamento" msprop:Generator_ColumnPropNameInTable="idEquipamentoColumn" msprop:Generator_UserColumnName="idEquipamento" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Promocao1" msprop:Generator_TableClassName="Promocao1DataTable" msprop:Generator_TableVarName="tablePromocao1" msprop:Generator_TablePropName="Promocao1" msprop:Generator_RowDeletingName="Promocao1RowDeleting" msprop:Generator_RowChangingName="Promocao1RowChanging" msprop:Generator_RowEvHandlerName="Promocao1RowChangeEventHandler" msprop:Generator_RowDeletedName="Promocao1RowDeleted" msprop:Generator_UserTableName="Promocao1" msprop:Generator_RowChangedName="Promocao1RowChanged" msprop:Generator_RowEvArgName="Promocao1RowChangeEvent" msprop:Generator_RowClassName="Promocao1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="dataInicio" msprop:Generator_ColumnVarNameInTable="columndataInicio" msprop:Generator_ColumnPropNameInRow="dataInicio" msprop:Generator_ColumnPropNameInTable="dataInicioColumn" msprop:Generator_UserColumnName="dataInicio" type="xs:dateTime" />
+              <xs:element name="dataFim" msprop:Generator_ColumnVarNameInTable="columndataFim" msprop:Generator_ColumnPropNameInRow="dataFim" msprop:Generator_ColumnPropNameInTable="dataFimColumn" msprop:Generator_UserColumnName="dataFim" type="xs:dateTime" />
+              <xs:element name="descricao" msprop:Generator_ColumnVarNameInTable="columndescricao" msprop:Generator_ColumnPropNameInRow="descricao" msprop:Generator_ColumnPropNameInTable="descricaoColumn" msprop:Generator_UserColumnName="descricao">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tipo" msprop:Generator_ColumnVarNameInTable="columntipo" msprop:Generator_ColumnPropNameInRow="tipo" msprop:Generator_ColumnPropNameInTable="tipoColumn" msprop:Generator_UserColumnName="tipo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Tipo1" msprop:Generator_TableClassName="Tipo1DataTable" msprop:Generator_TableVarName="tableTipo1" msprop:Generator_TablePropName="Tipo1" msprop:Generator_RowDeletingName="Tipo1RowDeleting" msprop:Generator_RowChangingName="Tipo1RowChanging" msprop:Generator_RowEvHandlerName="Tipo1RowChangeEventHandler" msprop:Generator_RowDeletedName="Tipo1RowDeleted" msprop:Generator_UserTableName="Tipo1" msprop:Generator_RowChangedName="Tipo1RowChanged" msprop:Generator_RowEvArgName="Tipo1RowChangeEvent" msprop:Generator_RowClassName="Tipo1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nome" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_UserColumnName="nome">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="64" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="descricao" msprop:Generator_ColumnVarNameInTable="columndescricao" msprop:Generator_ColumnPropNameInRow="descricao" msprop:Generator_ColumnPropNameInTable="descricaoColumn" msprop:Generator_UserColumnName="descricao">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ListEquipamentosLivres" msprop:Generator_TableClassName="ListEquipamentosLivresDataTable" msprop:Generator_TableVarName="tableListEquipamentosLivres" msprop:Generator_TablePropName="ListEquipamentosLivres" msprop:Generator_RowDeletingName="ListEquipamentosLivresRowDeleting" msprop:Generator_RowChangingName="ListEquipamentosLivresRowChanging" msprop:Generator_RowEvHandlerName="ListEquipamentosLivresRowChangeEventHandler" msprop:Generator_RowDeletedName="ListEquipamentosLivresRowDeleted" msprop:Generator_UserTableName="ListEquipamentosLivres" msprop:Generator_RowChangedName="ListEquipamentosLivresRowChanged" msprop:Generator_RowEvArgName="ListEquipamentosLivresRowChangeEvent" msprop:Generator_RowClassName="ListEquipamentosLivresRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="codigo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columncodigo" msprop:Generator_ColumnPropNameInRow="codigo" msprop:Generator_ColumnPropNameInTable="codigoColumn" msprop:Generator_UserColumnName="codigo" type="xs:int" />
+              <xs:element name="descricao" msprop:Generator_ColumnVarNameInTable="columndescricao" msprop:Generator_ColumnPropNameInRow="descricao" msprop:Generator_ColumnPropNameInTable="descricaoColumn" msprop:Generator_UserColumnName="descricao">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ListNaoUsadosSemana" msprop:Generator_TableClassName="ListNaoUsadosSemanaDataTable" msprop:Generator_TableVarName="tableListNaoUsadosSemana" msprop:Generator_TablePropName="ListNaoUsadosSemana" msprop:Generator_RowDeletingName="ListNaoUsadosSemanaRowDeleting" msprop:Generator_RowChangingName="ListNaoUsadosSemanaRowChanging" msprop:Generator_RowEvHandlerName="ListNaoUsadosSemanaRowChangeEventHandler" msprop:Generator_RowDeletedName="ListNaoUsadosSemanaRowDeleted" msprop:Generator_UserTableName="ListNaoUsadosSemana" msprop:Generator_RowChangedName="ListNaoUsadosSemanaRowChanged" msprop:Generator_RowEvArgName="ListNaoUsadosSemanaRowChangeEvent" msprop:Generator_RowClassName="ListNaoUsadosSemanaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="codigo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columncodigo" msprop:Generator_ColumnPropNameInRow="codigo" msprop:Generator_ColumnPropNameInTable="codigoColumn" msprop:Generator_UserColumnName="codigo" type="xs:int" />
+              <xs:element name="descricao" msprop:Generator_ColumnVarNameInTable="columndescricao" msprop:Generator_ColumnPropNameInRow="descricao" msprop:Generator_ColumnPropNameInTable="descricaoColumn" msprop:Generator_UserColumnName="descricao">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tipo" msprop:Generator_ColumnVarNameInTable="columntipo" msprop:Generator_ColumnPropNameInRow="tipo" msprop:Generator_ColumnPropNameInTable="tipoColumn" msprop:Generator_UserColumnName="tipo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="64" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Aluguer1" />
+      <xs:field xpath="mstns:nSerie" />
+    </xs:unique>
+    <xs:unique name="Aluguer_Equipamento1_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Aluguer_Equipamento1" />
+      <xs:field xpath="mstns:nSerieAluguer" />
+      <xs:field xpath="mstns:codigoEquipamento" />
+    </xs:unique>
+    <xs:unique name="Aluguer_Promocao1_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Aluguer_Promocao1" />
+      <xs:field xpath="mstns:nSerieAluguer" />
+      <xs:field xpath="mstns:idPromocao" />
+    </xs:unique>
+    <xs:unique name="Cliente1_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Cliente1" />
+      <xs:field xpath="mstns:numero" />
+    </xs:unique>
+    <xs:unique name="Empregado1_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Empregado1" />
+      <xs:field xpath="mstns:numero" />
+    </xs:unique>
+    <xs:unique name="Equipamento1_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Equipamento1" />
+      <xs:field xpath="mstns:codigo" />
+    </xs:unique>
+    <xs:unique name="Preco1_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Preco1" />
+      <xs:field xpath="mstns:validade" />
+      <xs:field xpath="mstns:idEquipamento" />
+    </xs:unique>
+    <xs:unique name="Promocao1_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Promocao1" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="Tipo1_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Tipo1" />
+      <xs:field xpath="mstns:nome" />
+    </xs:unique>
+    <xs:unique name="ListEquipamentosLivres_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ListEquipamentosLivres" />
+      <xs:field xpath="mstns:codigo" />
+    </xs:unique>
+    <xs:unique name="ListNaoUsadosSemana_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ListNaoUsadosSemana" />
+      <xs:field xpath="mstns:codigo" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
