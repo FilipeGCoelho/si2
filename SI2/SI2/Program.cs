@@ -55,6 +55,7 @@ namespace SI2
 
                 //read answer
                 string answer_mode = Console.ReadLine();
+                Console.Clear();
 
                 if (answer_mode == "1")
                     opi.method_EF();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 
 
 namespace SI2
@@ -33,28 +34,35 @@ namespace SI2
         {
             SqlCommand command = new SqlCommand("Insert_Promocao", Connection);
             command.CommandType = CommandType.StoredProcedure;
-            DateTime bixo = new DateTime(1999, 99, 99);
-            //          @dataInicio DATE,
-            //	        @dataFim DATE,
-            //	        @descricao VARCHAR(128),
-            //	        @tipo VARCHAR(8)
 
-            SqlParameter dataInicio = new SqlParameter("@dataInicio", SqlDbType.Date);
-            dataInicio.Value = bixo;
-            command.Parameters.Add(dataInicio);
-            SqlParameter dataFim = new SqlParameter("@dataFim", SqlDbType.Date);
-            SqlParameter descricao = new SqlParameter("@descricao", SqlDbType.VarChar);
-            SqlParameter tipo = new SqlParameter("@tipo", SqlDbType.VarChar);
+            command.Parameters.AddWithValue("@dataInicio", AuxiliaryMethods.GetVariable("Data de Inicio"));
+            command.Parameters.AddWithValue("@dataFim", AuxiliaryMethods.GetVariable("Data de Fim"));
+            command.Parameters.AddWithValue("@descricao", AuxiliaryMethods.GetVariable("Descricao"));
+            command.Parameters.AddWithValue("@tipo", AuxiliaryMethods.GetVariable("Tipo", "tempo ou desconto"));
+            command.ExecuteNonQuery();
+
         }
 
         public static void e_ado_remove()
         {
-            new SqlCommand("Remove_Promocao", Connection).ExecuteNonQuery();
+            SqlCommand command = new SqlCommand("Remove_Promocao", Connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@id", AuxiliaryMethods.GetVariable("ID"));
+            command.ExecuteNonQuery();
         }
 
         public static void e_ado_update()
         {
-            new SqlCommand("Update_Promocao", Connection).ExecuteNonQuery();
+            SqlCommand command = new SqlCommand("Insert_Promocao", Connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@id", AuxiliaryMethods.GetVariable("ID"));
+            command.Parameters.AddWithValue("@dataInicio", AuxiliaryMethods.GetVariable("Data de Inicio"));
+            command.Parameters.AddWithValue("@dataFim", AuxiliaryMethods.GetVariable("Data de Fim"));
+            command.Parameters.AddWithValue("@descricao", AuxiliaryMethods.GetVariable("Descricao"));
+            command.Parameters.AddWithValue("@tipo", AuxiliaryMethods.GetVariable("Tipo", "tempo ou desconto"));
+            command.ExecuteNonQuery();
         }
 
         //Inserir um aluguer com inserção de um cliente com dados completos
