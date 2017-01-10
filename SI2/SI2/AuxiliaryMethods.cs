@@ -15,5 +15,15 @@ namespace SI2
 
             return Console.ReadLine();
         }
+
+        public static string GetVariable(string name, string instructions)
+        {
+            Console.Clear();
+            Console.WriteLine("REQUESTED VALUE:\n");
+            Console.WriteLine("Instructions: " + instructions + "\n");
+            Console.WriteLine("\n" + name + ": ");
+
+            return Console.ReadLine();
+        }
     }
 }
