@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 
 
 namespace SI2
@@ -37,18 +38,16 @@ namespace SI2
         {
             SqlCommand command = new SqlCommand("Insert_Promocao", Connection);
             command.CommandType = CommandType.StoredProcedure;
-            DateTime bixo = new DateTime(1999, 99, 99);
-            //          @dataInicio DATE,
-            //	        @dataFim DATE,
-            //	        @descricao VARCHAR(128),
-            //	        @tipo VARCHAR(8)
 
-            SqlParameter dataInicio = new SqlParameter("@dataInicio", SqlDbType.Date);
-            dataInicio.Value = bixo;
-            command.Parameters.Add(dataInicio);
-            SqlParameter dataFim = new SqlParameter("@dataFim", SqlDbType.Date);
-            SqlParameter descricao = new SqlParameter("@descricao", SqlDbType.VarChar);
-            SqlParameter tipo = new SqlParameter("@tipo", SqlDbType.VarChar);
+            command.Parameters.AddWithValue("@dataInicio","1999-01-01");
+            command.Parameters.AddWithValue("@dataFim","1999-01-02");
+            command.Parameters.AddWithValue("@descricao","tralha");
+            command.Parameters.AddWithValue("@tipo","tempo");
+            command.ExecuteNonQuery();
+
+//            command.Parameters.Add(new SqlParameter("@dataFim", SqlDbType.Date).Value = "1999-01-01");
+//            command.Parameters.Add(new SqlParameter("@descricao", SqlDbType.VarChar).Value = "tralha");
+//            command.Parameters.Add(new SqlParameter("@tipo", SqlDbType.VarChar).Value = "tipotralha");
         }
 
         public static void e_ado_remove()
