@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SI2
@@ -16,6 +17,7 @@ namespace SI2
             MethodDB.Init();
             App.Init();
             App.Run();
+            App.ShutDown();
         }
     }
 
@@ -25,18 +27,77 @@ namespace SI2
 
         public static void Run()
         {
-            Menu();
+            while (true)
+            {
+                Menu();
+                Listen();
+            }
         }
 
         private static void Menu()
         {
+            Console.Clear();
             foreach (var current in operations)
             {
-                Console.WriteLine(current.Key + '.' + current.Value.phrase);
+                Console.WriteLine(current.Key + ".  " + current.Value.phrase);
             }
+
+            Console.WriteLine("\n0.  Exit");
         }
 
+        private static void Listen()
+        {
+            //read answer
+            string answer_command = Console.ReadLine();
 
+            //check if answer is valid
+            OperationInfo opi;
+
+            if(operations.TryGetValue(answer_command,out opi))
+            {
+                //choose the pretended mode (EF or ADO)
+                Console.Clear();
+                Console.WriteLine("Which mode do you want: \n1.Entity Framework (EF)\n2.ADO.NET\n3.Exit");
+
+                //read answer
+                string answer_mode = Console.ReadLine();
+
+                if (answer_mode == "1")
+                    opi.method_EF();
+
+                else if (answer_mode == "2")
+                    opi.method_ADO_NET();
+
+                else if (answer_mode == "3")
+                    return;
+
+                else
+                    ErrorMessage();
+
+                return;
+            }
+
+            if (answer_command == "0")
+                ShutDown();
+
+            ErrorMessage();
+            return;
+        }
+
+        private static void ErrorMessage()
+        {
+            Console.WriteLine("Invalid answer");
+            Thread.Sleep(1500);
+        }
+
+        public static void ShutDown()
+        {
+            Console.Clear();
+            Console.WriteLine("leaving ...");
+            Thread.Sleep(1500);
+            Environment.Exit(0);
+        }
+          
         public static void Init()
         {
             operations.Add("e", new OperationInfo("Inserir, remover e actualizar informação de promoções", MethodDB.e_ef, MethodDB.e_ado_net));
