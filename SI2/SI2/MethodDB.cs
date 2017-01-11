@@ -200,10 +200,12 @@ namespace SI2
 
         }
 
-        //Listar todos os equipamentos livres, para um determinado tempo e tipo
+        //Listar os equipamentos sem alugueres na última semana
         public static void k_ef()
         {
+            List<ListNaoUsadosSemana_Result> lst = DB.ListNaoUsadosSemana().ToList();
 
+            AuxiliaryMethods.ListResult(lst, x => {return String.Format("Descrição: {0}, Codigo: {1}, Tipo: {2}",x.descricao, x.codigo, x.tipo);});
         }
 
         public static void k_ado_net()
