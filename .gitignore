@@ -5,10 +5,12 @@
 *.suo
 *.user
 *.sln.docstates
+*.cache
 
 # Build results
 
-
+SI2/SI2/bin/
+SI2/SI2/obj/
 
 [Dd]ebug/
 [Rr]elease/
