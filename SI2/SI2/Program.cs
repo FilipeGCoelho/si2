@@ -76,13 +76,28 @@ namespace SI2
                 Console.WriteLine(current.Key + ".  " + current.Value.phrase);
             }
 
-            Console.WriteLine("\n0.  Exit");
+            Console.WriteLine("q.  Benchmark");
+            Console.WriteLine("x.  Alugueres to XML");
+
+            Console.Write("0.  Exit\n\nAnswer: ");
         }
 
         private static void Listen()
         {
             //read answer
             string answer_command = Console.ReadLine();
+
+            if (answer_command == "1337")
+            {
+                Benchmark.Compare();
+                return;
+            }
+
+            if (answer_command == "x")
+            {
+                XMLExporter.AlugueresToXML(MethodDB.Connection);
+                return;
+            }
 
             //check if answer is valid
             OperationInfo opi;

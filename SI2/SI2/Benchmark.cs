@@ -8,22 +8,22 @@ namespace SI2
 {
     class Benchmark
     {
-        Dictionary<string, OperationInfo> dic = Program.MappingFunctions();
+        static Dictionary<string, OperationInfo> dic = Program.MappingFunctions();
 
         public static void Compare()
         {
-            
+            bench_e1();
         }
 
-        private void bench_e1()
+        private static void bench_e1()
         {
-            DateTime inicio = DateTime.Parse("2016-06-06");
-            DateTime fim = DateTime.Parse("2017-06-06");
+            string inicio = "2016-06-06";
+            string fim = "2017-06-06";
             string descrição = "desc_benchmark";
             string tipo = "desconto";
 
             long init = DateTime.Now.Ticks;
-                MethodDB.e_ef_insert(inicio, fim, descrição, tipo);
+                MethodDB.e_ef_insert(DateTime.Parse(inicio), DateTime.Parse(fim), descrição, tipo);
             long end = DateTime.Now.Ticks;
 
             long ef = end - init;
@@ -37,10 +37,19 @@ namespace SI2
             PrintDiff(dic["e1"].phrase, ef, ado);
         }
 
-        private void PrintDiff(string desc, long ef, long ado)
+        private static void PrintDiff(string desc, long ef, long ado)
         {
-            Console.WriteLine("{0} :\nFastest: " + (ef-ado > 0 ? "ADO-NET " : "EF ")  + "by" , desc, );
-                
+            double cmp;
+
+            if (ef > ado)
+                cmp = (float)ado/ef*100;
+            else
+                cmp = (float)ef/ado*100;
+
+            Console.Clear();
+            Console.WriteLine("Tested operation: {0}\n\nFastest: " + (ef-ado > 0 ? "ADO-NET " : "EF ")  + "taking {1}% of the loser's time" ,desc, cmp);   
+            Console.WriteLine("\n\n\npress any key to exit...");
+            Console.ReadKey();
         }
     }
 }
