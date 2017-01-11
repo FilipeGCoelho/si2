@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+    <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+    <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+  </configSections>
+  <connectionStrings>
+<<<<<<< HEAD
+    <add name="SI2.Properties.Settings.SI2" connectionString="Data Source=DESKTOP-EHJ4FO6;Initial Catalog=SI2;Integrated Security=True" providerName="System.Data.SqlClient" />
+    <add name="SI2Entities_aluguer" connectionString="metadata=res://*/SQL.Aluguer.csdl|res://*/SQL.Aluguer.ssdl|res://*/SQL.Aluguer.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-EHJ4FO6;initial catalog=SI2;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+    <add name="SI2Entities" connectionString="metadata=res://*/SQL.EF.csdl|res://*/SQL.EF.ssdl|res://*/SQL.EF.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-EHJ4FO6;initial catalog=SI2;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+=======
+    <add name="SI2.Properties.Settings.SI2" connectionString="Data Source=DESKTOP-K98KF5A;Initial Catalog=SI2;Integrated Security=True" providerName="System.Data.SqlClient" />
+    <add name="SI2Entities_aluguer" connectionString="metadata=res://*/SQL.Aluguer.csdl|res://*/SQL.Aluguer.ssdl|res://*/SQL.Aluguer.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-K98KF5A;initial catalog=SI2;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+>>>>>>> 481f3423c837a3270ce05f7911e8f2be85bb403b
+    <add name="SI2Entities1" connectionString="metadata=res://*/SQL.EF.csdl|res://*/SQL.EF.ssdl|res://*/SQL.EF.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=localhost;initial catalog=SI2;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+  </connectionStrings>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2" />
+  </startup>
+  <entityFramework>
+    <defaultConnectionFactory type="System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework">
+      <parameters>
+        <parameter value="mssqllocaldb" />
+      </parameters>
+    </defaultConnectionFactory>
+    <providers>
+      <provider invariantName="System.Data.SqlClient" type="System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer" />
+    </providers>
+  </entityFramework>
+</configuration>
