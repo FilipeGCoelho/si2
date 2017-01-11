@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.Data.Entity.Core.EntityClient;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Linq;
@@ -16,11 +17,26 @@ namespace SI2
     {
         private static readonly string ConnectionString = "user id=si2;password=si2;database=SI2;";
         private static readonly SqlConnection Connection = new SqlConnection(ConnectionString);
-
+        
         private static SI2Entities1 DB = new SI2Entities1();
+
+//        public static String GetEntityString()
+//        {
+//
+//            SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder();
+//            sqlBuilder.DataSource = "DESKTOP - EHJ4FO6";
+//            sqlBuilder.InitialCatalog = "SI2";
+//
+//            EntityConnectionStringBuilder entityConnectionBuilder = new EntityConnectionStringBuilder();
+//
+//            entityConnectionBuilder.Provider = sqlBuilder.ToString();
+//            
+//            return entityConnection.ToString();
+//        }
 
         public static void Init()
         {
+
             try
             {
                 Connection.Open();
@@ -29,6 +45,7 @@ namespace SI2
             {
                 Console.WriteLine(e.ToString());
             }
+
         }
 
         //Inserir, remover e actualizar informação de promoções
@@ -351,6 +368,10 @@ namespace SI2
             command.Parameters.AddWithValue("@nEmpregado", AuxiliaryMethods.GetVariable("Numero do Empregado"));
         }
 
+        public static void CloseConnection()
+        {
+            Connection.Close();
+        }
 
     }
 }

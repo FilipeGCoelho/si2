@@ -39,7 +39,7 @@ namespace SI2
 
         private void PrintDiff(string desc, long ef, long ado)
         {
-            Console.WriteLine("{0} :\nFastest: " + (ef-ado > 0 ? "ADO-NET " : "EF ")  + "by" , desc, );
+//            Console.WriteLine("{0} :\nFastest: " + (ef-ado > 0 ? "ADO-NET " : "EF ")  + "by" , desc, );
                 
         }
     }

@@ -130,6 +130,7 @@ namespace SI2
             Console.Clear();
             Console.WriteLine("leaving ...");
             Thread.Sleep(1500);
+            MethodDB.CloseConnection();
             Environment.Exit(0);
         }
     }

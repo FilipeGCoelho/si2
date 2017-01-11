@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Data.Entity.Core.EntityClient;
+
 namespace SI2.SQL
 {
     using System;
@@ -20,6 +22,13 @@ namespace SI2.SQL
         public SI2Entities1()
             : base("name=SI2Entities1")
         {
+            
+        }
+
+        public SI2Entities1(string connectionString)
+            : base(new EntityConnection(connectionString), true)
+        {
+            
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

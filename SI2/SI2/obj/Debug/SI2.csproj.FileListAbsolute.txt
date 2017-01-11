@@ -15,3 +15,7 @@ D:\DRIVE\ISEL\SEMESTRE_5\SI2\trabalhos\si2\SI2\SI2\bin\Debug\EntityFramework.Sql
 D:\DRIVE\ISEL\SEMESTRE_5\SI2\trabalhos\si2\SI2\SI2\bin\Debug\EntityFramework.xml
 D:\DRIVE\ISEL\SEMESTRE_5\SI2\trabalhos\si2\SI2\SI2\bin\Debug\EntityFramework.SqlServer.xml
 D:\DRIVE\ISEL\SEMESTRE_5\SI2\trabalhos\si2\SI2\SI2\obj\Debug\SI2.csprojResolveAssemblyReference.cache
+C:\Users\Rui\Desktop\Aulas\SI2\SI2\SI2\bin\Debug\EntityFramework.dll
+C:\Users\Rui\Desktop\Aulas\SI2\SI2\SI2\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Rui\Desktop\Aulas\SI2\SI2\SI2\bin\Debug\EntityFramework.xml
+C:\Users\Rui\Desktop\Aulas\SI2\SI2\SI2\bin\Debug\EntityFramework.SqlServer.xml
