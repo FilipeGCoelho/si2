@@ -8,6 +8,8 @@ namespace SI2
 {
     class Benchmark
     {
+        Dictionary<string, OperationInfo> dic = Program.MappingFunctions();
+
         public static void Compare()
         {
             
@@ -26,7 +28,19 @@ namespace SI2
 
             long ef = end - init;
 
+            init = DateTime.Now.Ticks;
+                MethodDB.e_ado_insert(inicio, fim, descrição, tipo);
+            end = DateTime.Now.Ticks;
 
+            long ado = end - init;
+
+            PrintDiff(dic["e1"].phrase, ef, ado);
+        }
+
+        private void PrintDiff(string desc, long ef, long ado)
+        {
+            Console.WriteLine("{0} :\nFastest: " + (ef-ado > 0 ? "ADO-NET" : "EF"));
+                
         }
     }
 }

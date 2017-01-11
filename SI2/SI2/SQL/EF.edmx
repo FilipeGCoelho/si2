@@ -1,0 +1,1143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SI2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Aluguer">
+          <Key>
+            <PropertyRef Name="nSerie" />
+          </Key>
+          <Property Name="nSerie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dataInicio" Type="datetime" Nullable="false" />
+          <Property Name="dataFim" Type="datetime" />
+          <Property Name="tipo" Type="int" Nullable="false" />
+          <Property Name="preco" Type="money" Nullable="false" />
+          <Property Name="nEmpregado" Type="int" />
+          <Property Name="nCliente" Type="int" />
+          <Property Name="hidden" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Aluguer_Equipamento">
+          <Key>
+            <PropertyRef Name="nSerieAluguer" />
+            <PropertyRef Name="codigoEquipamento" />
+          </Key>
+          <Property Name="nSerieAluguer" Type="int" Nullable="false" />
+          <Property Name="codigoEquipamento" Type="int" Nullable="false" />
+          <Property Name="hidden" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Aluguer_Promocao">
+          <Key>
+            <PropertyRef Name="nSerieAluguer" />
+            <PropertyRef Name="idPromocao" />
+          </Key>
+          <Property Name="nSerieAluguer" Type="int" Nullable="false" />
+          <Property Name="idPromocao" Type="int" Nullable="false" />
+          <Property Name="hidden" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="numero" />
+          </Key>
+          <Property Name="numero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="64" />
+          <Property Name="nif" Type="numeric" Precision="9" Scale="0" />
+          <Property Name="morada" Type="varchar" MaxLength="64" />
+          <Property Name="hidden" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empregado">
+          <Key>
+            <PropertyRef Name="numero" />
+          </Key>
+          <Property Name="numero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="hidden" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Equipamento">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="64" />
+          <Property Name="hidden" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Preco">
+          <Key>
+            <PropertyRef Name="validade" />
+            <PropertyRef Name="idEquipamento" />
+          </Key>
+          <Property Name="validade" Type="int" Nullable="false" />
+          <Property Name="valor" Type="money" Nullable="false" />
+          <Property Name="idEquipamento" Type="int" Nullable="false" />
+          <Property Name="hidden" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Promocao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dataInicio" Type="date" Nullable="false" />
+          <Property Name="dataFim" Type="date" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="hidden" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo">
+          <Key>
+            <PropertyRef Name="nome" />
+          </Key>
+          <Property Name="nome" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="hidden" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SI2.dbo.Aluguer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Aluguer1">
+          <Key>
+            <PropertyRef Name="nSerie" />
+            <PropertyRef Name="dataInicio" />
+            <PropertyRef Name="tipo" />
+            <PropertyRef Name="preco" />
+          </Key>
+          <Property Name="nSerie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dataInicio" Type="datetime" Nullable="false" />
+          <Property Name="dataFim" Type="datetime" />
+          <Property Name="tipo" Type="int" Nullable="false" />
+          <Property Name="preco" Type="money" Nullable="false" />
+          <Property Name="nEmpregado" Type="int" />
+          <Property Name="nCliente" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SI2.dbo.Aluguer_Equipamento' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Aluguer_Equipamento1">
+          <Key>
+            <PropertyRef Name="nSerieAluguer" />
+            <PropertyRef Name="codigoEquipamento" />
+          </Key>
+          <Property Name="nSerieAluguer" Type="int" Nullable="false" />
+          <Property Name="codigoEquipamento" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SI2.dbo.Aluguer_Promocao' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Aluguer_Promocao1">
+          <Key>
+            <PropertyRef Name="nSerieAluguer" />
+            <PropertyRef Name="idPromocao" />
+          </Key>
+          <Property Name="nSerieAluguer" Type="int" Nullable="false" />
+          <Property Name="idPromocao" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SI2.dbo.Cliente' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Cliente1">
+          <Key>
+            <PropertyRef Name="numero" />
+          </Key>
+          <Property Name="numero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="64" />
+          <Property Name="nif" Type="numeric" Precision="9" Scale="0" />
+          <Property Name="morada" Type="varchar" MaxLength="64" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SI2.dbo.Empregado' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Empregado1">
+          <Key>
+            <PropertyRef Name="numero" />
+            <PropertyRef Name="nome" />
+          </Key>
+          <Property Name="numero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SI2.dbo.Equipamento' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Equipamento1">
+          <Key>
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="descricao" />
+          </Key>
+          <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="64" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SI2.dbo.Preco' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Preco1">
+          <Key>
+            <PropertyRef Name="validade" />
+            <PropertyRef Name="valor" />
+            <PropertyRef Name="idEquipamento" />
+          </Key>
+          <Property Name="validade" Type="int" Nullable="false" />
+          <Property Name="valor" Type="money" Nullable="false" />
+          <Property Name="idEquipamento" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SI2.dbo.Promocao' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Promocao1">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="dataInicio" />
+            <PropertyRef Name="dataFim" />
+            <PropertyRef Name="descricao" />
+            <PropertyRef Name="tipo" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dataInicio" Type="date" Nullable="false" />
+          <Property Name="dataFim" Type="date" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SI2.dbo.Tipo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tipo1">
+          <Key>
+            <PropertyRef Name="nome" />
+            <PropertyRef Name="descricao" />
+          </Key>
+          <Property Name="nome" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Aluguer__nClient__2022C2A6">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Aluguer" Type="Self.Aluguer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="numero" />
+            </Principal>
+            <Dependent Role="Aluguer">
+              <PropertyRef Name="nCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Aluguer__nEmpreg__1F2E9E6D">
+          <End Role="Empregado" Type="Self.Empregado" Multiplicity="0..1" />
+          <End Role="Aluguer" Type="Self.Aluguer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empregado">
+              <PropertyRef Name="numero" />
+            </Principal>
+            <Dependent Role="Aluguer">
+              <PropertyRef Name="nEmpregado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Aluguer_E__codig__2D7CBDC4">
+          <End Role="Equipamento" Type="Self.Equipamento" Multiplicity="1" />
+          <End Role="Aluguer_Equipamento" Type="Self.Aluguer_Equipamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipamento">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Aluguer_Equipamento">
+              <PropertyRef Name="codigoEquipamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Aluguer_E__nSeri__2C88998B">
+          <End Role="Aluguer" Type="Self.Aluguer" Multiplicity="1" />
+          <End Role="Aluguer_Equipamento" Type="Self.Aluguer_Equipamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aluguer">
+              <PropertyRef Name="nSerie" />
+            </Principal>
+            <Dependent Role="Aluguer_Equipamento">
+              <PropertyRef Name="nSerieAluguer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Aluguer_P__idPro__28B808A7">
+          <End Role="Promocao" Type="Self.Promocao" Multiplicity="1" />
+          <End Role="Aluguer_Promocao" Type="Self.Aluguer_Promocao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promocao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Aluguer_Promocao">
+              <PropertyRef Name="idPromocao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Aluguer_P__nSeri__27C3E46E">
+          <End Role="Aluguer" Type="Self.Aluguer" Multiplicity="1" />
+          <End Role="Aluguer_Promocao" Type="Self.Aluguer_Promocao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aluguer">
+              <PropertyRef Name="nSerie" />
+            </Principal>
+            <Dependent Role="Aluguer_Promocao">
+              <PropertyRef Name="nSerieAluguer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipament__tipo__11D4A34F">
+          <End Role="Tipo" Type="Self.Tipo" Multiplicity="0..1" />
+          <End Role="Equipamento" Type="Self.Equipamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo">
+              <PropertyRef Name="nome" />
+            </Principal>
+            <Dependent Role="Equipamento">
+              <PropertyRef Name="tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Preco__idEquipam__15A53433">
+          <End Role="Equipamento" Type="Self.Equipamento" Multiplicity="1" />
+          <End Role="Preco" Type="Self.Preco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipamento">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Preco">
+              <PropertyRef Name="idEquipamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Add_Preco" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idEquipamento" Type="int" Mode="In" />
+          <Parameter Name="validade" Type="int" Mode="In" />
+          <Parameter Name="valor" Type="money" Mode="In" />
+        </Function>
+        <Function Name="Insert_Aluguer_Com_Cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCliente" Type="int" Mode="In" />
+          <Parameter Name="dataInicio" Type="datetime" Mode="In" />
+          <Parameter Name="dataFim" Type="date" Mode="In" />
+          <Parameter Name="tipo" Type="int" Mode="In" />
+          <Parameter Name="preco" Type="money" Mode="In" />
+          <Parameter Name="nEmpregado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Insert_Aluguer_Sem_Cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nomeCliente" Type="varchar" Mode="In" />
+          <Parameter Name="nifCliente" Type="numeric" Mode="In" />
+          <Parameter Name="moradaCliente" Type="varchar" Mode="In" />
+          <Parameter Name="dataInicio" Type="datetime" Mode="In" />
+          <Parameter Name="dataFim" Type="date" Mode="In" />
+          <Parameter Name="tipo" Type="int" Mode="In" />
+          <Parameter Name="preco" Type="money" Mode="In" />
+          <Parameter Name="nEmpregado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Insert_Cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nome" Type="varchar" Mode="In" />
+          <Parameter Name="nif" Type="numeric" Mode="In" />
+          <Parameter Name="morada" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Insert_Equipamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Descricao" Type="varchar" Mode="In" />
+          <Parameter Name="tipo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Insert_Promocao" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dataInicio" Type="date" Mode="In" />
+          <Parameter Name="dataFim" Type="date" Mode="In" />
+          <Parameter Name="descricao" Type="varchar" Mode="In" />
+          <Parameter Name="tipo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ListEquipamentosLivres" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tipo" Type="varchar" Mode="In" />
+          <Parameter Name="tempo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListNaoUsadosSemana" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Remove_Aluguer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nSerie" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Remove_Cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="numero" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Remove_Equipamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="codigo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Remove_Promocao" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Update_Cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="numero" Type="int" Mode="In" />
+          <Parameter Name="nome" Type="varchar" Mode="In" />
+          <Parameter Name="nif" Type="numeric" Mode="In" />
+          <Parameter Name="morada" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Equipamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="codigo" Type="int" Mode="In" />
+          <Parameter Name="Descricao" Type="varchar" Mode="In" />
+          <Parameter Name="tipo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Promocao" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="dataInicio" Type="date" Mode="In" />
+          <Parameter Name="dataFim" Type="date" Mode="In" />
+          <Parameter Name="descricao" Type="varchar" Mode="In" />
+          <Parameter Name="tipo" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="SI2ModelStoreContainer">
+          <EntitySet Name="Aluguer" EntityType="Self.Aluguer" Schema="dbb" store:Type="Tables" />
+          <EntitySet Name="Aluguer_Equipamento" EntityType="Self.Aluguer_Equipamento" Schema="dbb" store:Type="Tables" />
+          <EntitySet Name="Aluguer_Promocao" EntityType="Self.Aluguer_Promocao" Schema="dbb" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbb" store:Type="Tables" />
+          <EntitySet Name="Empregado" EntityType="Self.Empregado" Schema="dbb" store:Type="Tables" />
+          <EntitySet Name="Equipamento" EntityType="Self.Equipamento" Schema="dbb" store:Type="Tables" />
+          <EntitySet Name="Preco" EntityType="Self.Preco" Schema="dbb" store:Type="Tables" />
+          <EntitySet Name="Promocao" EntityType="Self.Promocao" Schema="dbb" store:Type="Tables" />
+          <EntitySet Name="Tipo" EntityType="Self.Tipo" Schema="dbb" store:Type="Tables" />
+          <EntitySet Name="Aluguer1" EntityType="Self.Aluguer1" store:Type="Views" store:Schema="dbo" store:Name="Aluguer">
+            <DefiningQuery>SELECT 
+    [Aluguer1].[nSerie] AS [nSerie], 
+    [Aluguer1].[dataInicio] AS [dataInicio], 
+    [Aluguer1].[dataFim] AS [dataFim], 
+    [Aluguer1].[tipo] AS [tipo], 
+    [Aluguer1].[preco] AS [preco], 
+    [Aluguer1].[nEmpregado] AS [nEmpregado], 
+    [Aluguer1].[nCliente] AS [nCliente]
+    FROM [dbo].[Aluguer] AS [Aluguer1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Aluguer_Equipamento1" EntityType="Self.Aluguer_Equipamento1" store:Type="Views" store:Schema="dbo" store:Name="Aluguer_Equipamento">
+            <DefiningQuery>SELECT 
+    [Aluguer_Equipamento1].[nSerieAluguer] AS [nSerieAluguer], 
+    [Aluguer_Equipamento1].[codigoEquipamento] AS [codigoEquipamento]
+    FROM [dbo].[Aluguer_Equipamento] AS [Aluguer_Equipamento1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Aluguer_Promocao1" EntityType="Self.Aluguer_Promocao1" store:Type="Views" store:Schema="dbo" store:Name="Aluguer_Promocao">
+            <DefiningQuery>SELECT 
+    [Aluguer_Promocao1].[nSerieAluguer] AS [nSerieAluguer], 
+    [Aluguer_Promocao1].[idPromocao] AS [idPromocao]
+    FROM [dbo].[Aluguer_Promocao] AS [Aluguer_Promocao1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Cliente1" EntityType="Self.Cliente1" store:Type="Views" store:Schema="dbo" store:Name="Cliente">
+            <DefiningQuery>SELECT 
+    [Cliente1].[numero] AS [numero], 
+    [Cliente1].[nome] AS [nome], 
+    [Cliente1].[nif] AS [nif], 
+    [Cliente1].[morada] AS [morada]
+    FROM [dbo].[Cliente] AS [Cliente1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Empregado1" EntityType="Self.Empregado1" store:Type="Views" store:Schema="dbo" store:Name="Empregado">
+            <DefiningQuery>SELECT 
+    [Empregado1].[numero] AS [numero], 
+    [Empregado1].[nome] AS [nome]
+    FROM [dbo].[Empregado] AS [Empregado1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Equipamento1" EntityType="Self.Equipamento1" store:Type="Views" store:Schema="dbo" store:Name="Equipamento">
+            <DefiningQuery>SELECT 
+    [Equipamento1].[codigo] AS [codigo], 
+    [Equipamento1].[descricao] AS [descricao], 
+    [Equipamento1].[tipo] AS [tipo]
+    FROM [dbo].[Equipamento] AS [Equipamento1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Preco1" EntityType="Self.Preco1" store:Type="Views" store:Schema="dbo" store:Name="Preco">
+            <DefiningQuery>SELECT 
+    [Preco1].[validade] AS [validade], 
+    [Preco1].[valor] AS [valor], 
+    [Preco1].[idEquipamento] AS [idEquipamento]
+    FROM [dbo].[Preco] AS [Preco1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Promocao1" EntityType="Self.Promocao1" store:Type="Views" store:Schema="dbo" store:Name="Promocao">
+            <DefiningQuery>SELECT 
+    [Promocao1].[id] AS [id], 
+    [Promocao1].[dataInicio] AS [dataInicio], 
+    [Promocao1].[dataFim] AS [dataFim], 
+    [Promocao1].[descricao] AS [descricao], 
+    [Promocao1].[tipo] AS [tipo]
+    FROM [dbo].[Promocao] AS [Promocao1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Tipo1" EntityType="Self.Tipo1" store:Type="Views" store:Schema="dbo" store:Name="Tipo">
+            <DefiningQuery>SELECT 
+    [Tipo1].[nome] AS [nome], 
+    [Tipo1].[descricao] AS [descricao]
+    FROM [dbo].[Tipo] AS [Tipo1]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Aluguer__nClient__2022C2A6" Association="Self.FK__Aluguer__nClient__2022C2A6">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Aluguer" EntitySet="Aluguer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Aluguer__nEmpreg__1F2E9E6D" Association="Self.FK__Aluguer__nEmpreg__1F2E9E6D">
+            <End Role="Empregado" EntitySet="Empregado" />
+            <End Role="Aluguer" EntitySet="Aluguer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Aluguer_E__codig__2D7CBDC4" Association="Self.FK__Aluguer_E__codig__2D7CBDC4">
+            <End Role="Equipamento" EntitySet="Equipamento" />
+            <End Role="Aluguer_Equipamento" EntitySet="Aluguer_Equipamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Aluguer_E__nSeri__2C88998B" Association="Self.FK__Aluguer_E__nSeri__2C88998B">
+            <End Role="Aluguer" EntitySet="Aluguer" />
+            <End Role="Aluguer_Equipamento" EntitySet="Aluguer_Equipamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Aluguer_P__idPro__28B808A7" Association="Self.FK__Aluguer_P__idPro__28B808A7">
+            <End Role="Promocao" EntitySet="Promocao" />
+            <End Role="Aluguer_Promocao" EntitySet="Aluguer_Promocao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Aluguer_P__nSeri__27C3E46E" Association="Self.FK__Aluguer_P__nSeri__27C3E46E">
+            <End Role="Aluguer" EntitySet="Aluguer" />
+            <End Role="Aluguer_Promocao" EntitySet="Aluguer_Promocao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipament__tipo__11D4A34F" Association="Self.FK__Equipament__tipo__11D4A34F">
+            <End Role="Tipo" EntitySet="Tipo" />
+            <End Role="Equipamento" EntitySet="Equipamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Preco__idEquipam__15A53433" Association="Self.FK__Preco__idEquipam__15A53433">
+            <End Role="Equipamento" EntitySet="Equipamento" />
+            <End Role="Preco" EntitySet="Preco" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SI2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Aluguer">
+          <Key>
+            <PropertyRef Name="nSerie" />
+          </Key>
+          <Property Name="nSerie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dataInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dataFim" Type="DateTime" Precision="3" />
+          <Property Name="tipo" Type="Int32" Nullable="false" />
+          <Property Name="preco" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="nEmpregado" Type="Int32" />
+          <Property Name="nCliente" Type="Int32" />
+          <Property Name="hidden" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Aluguer__nClient__2022C2A6" FromRole="Aluguer" ToRole="Cliente" />
+          <NavigationProperty Name="Empregado" Relationship="Self.FK__Aluguer__nEmpreg__1F2E9E6D" FromRole="Aluguer" ToRole="Empregado" />
+          <NavigationProperty Name="Aluguer_Equipamento" Relationship="Self.FK__Aluguer_E__nSeri__2C88998B" FromRole="Aluguer" ToRole="Aluguer_Equipamento" />
+          <NavigationProperty Name="Aluguer_Promocao" Relationship="Self.FK__Aluguer_P__nSeri__27C3E46E" FromRole="Aluguer" ToRole="Aluguer_Promocao" />
+        </EntityType>
+        <EntityType Name="Aluguer_Equipamento">
+          <Key>
+            <PropertyRef Name="nSerieAluguer" />
+            <PropertyRef Name="codigoEquipamento" />
+          </Key>
+          <Property Name="nSerieAluguer" Type="Int32" Nullable="false" />
+          <Property Name="codigoEquipamento" Type="Int32" Nullable="false" />
+          <Property Name="hidden" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Aluguer" Relationship="Self.FK__Aluguer_E__nSeri__2C88998B" FromRole="Aluguer_Equipamento" ToRole="Aluguer" />
+          <NavigationProperty Name="Equipamento" Relationship="Self.FK__Aluguer_E__codig__2D7CBDC4" FromRole="Aluguer_Equipamento" ToRole="Equipamento" />
+        </EntityType>
+        <EntityType Name="Aluguer_Promocao">
+          <Key>
+            <PropertyRef Name="nSerieAluguer" />
+            <PropertyRef Name="idPromocao" />
+          </Key>
+          <Property Name="nSerieAluguer" Type="Int32" Nullable="false" />
+          <Property Name="idPromocao" Type="Int32" Nullable="false" />
+          <Property Name="hidden" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Aluguer" Relationship="Self.FK__Aluguer_P__nSeri__27C3E46E" FromRole="Aluguer_Promocao" ToRole="Aluguer" />
+          <NavigationProperty Name="Promocao" Relationship="Self.FK__Aluguer_P__idPro__28B808A7" FromRole="Aluguer_Promocao" ToRole="Promocao" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="numero" />
+          </Key>
+          <Property Name="numero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="nif" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="morada" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="hidden" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Aluguers" Relationship="Self.FK__Aluguer__nClient__2022C2A6" FromRole="Cliente" ToRole="Aluguer" />
+        </EntityType>
+        <EntityType Name="Empregado">
+          <Key>
+            <PropertyRef Name="numero" />
+          </Key>
+          <Property Name="numero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hidden" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Aluguers" Relationship="Self.FK__Aluguer__nEmpreg__1F2E9E6D" FromRole="Empregado" ToRole="Aluguer" />
+        </EntityType>
+        <EntityType Name="Equipamento">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="hidden" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Aluguer_Equipamento" Relationship="Self.FK__Aluguer_E__codig__2D7CBDC4" FromRole="Equipamento" ToRole="Aluguer_Equipamento" />
+          <NavigationProperty Name="Tipo1" Relationship="Self.FK__Equipament__tipo__11D4A34F" FromRole="Equipamento" ToRole="Tipo" />
+          <NavigationProperty Name="Precoes" Relationship="Self.FK__Preco__idEquipam__15A53433" FromRole="Equipamento" ToRole="Preco" />
+        </EntityType>
+        <EntityType Name="Preco">
+          <Key>
+            <PropertyRef Name="validade" />
+            <PropertyRef Name="idEquipamento" />
+          </Key>
+          <Property Name="validade" Type="Int32" Nullable="false" />
+          <Property Name="valor" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="idEquipamento" Type="Int32" Nullable="false" />
+          <Property Name="hidden" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Equipamento" Relationship="Self.FK__Preco__idEquipam__15A53433" FromRole="Preco" ToRole="Equipamento" />
+        </EntityType>
+        <EntityType Name="Promocao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dataInicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dataFim" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="descricao" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hidden" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Aluguer_Promocao" Relationship="Self.FK__Aluguer_P__idPro__28B808A7" FromRole="Promocao" ToRole="Aluguer_Promocao" />
+        </EntityType>
+        <EntityType Name="Tipo">
+          <Key>
+            <PropertyRef Name="nome" />
+          </Key>
+          <Property Name="nome" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hidden" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Equipamentoes" Relationship="Self.FK__Equipament__tipo__11D4A34F" FromRole="Tipo" ToRole="Equipamento" />
+        </EntityType>
+        <EntityType Name="Aluguer1">
+          <Key>
+            <PropertyRef Name="nSerie" />
+            <PropertyRef Name="dataInicio" />
+            <PropertyRef Name="tipo" />
+            <PropertyRef Name="preco" />
+          </Key>
+          <Property Name="nSerie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dataInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dataFim" Type="DateTime" Precision="3" />
+          <Property Name="tipo" Type="Int32" Nullable="false" />
+          <Property Name="preco" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="nEmpregado" Type="Int32" />
+          <Property Name="nCliente" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Aluguer_Equipamento1">
+          <Key>
+            <PropertyRef Name="nSerieAluguer" />
+            <PropertyRef Name="codigoEquipamento" />
+          </Key>
+          <Property Name="nSerieAluguer" Type="Int32" Nullable="false" />
+          <Property Name="codigoEquipamento" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Aluguer_Promocao1">
+          <Key>
+            <PropertyRef Name="nSerieAluguer" />
+            <PropertyRef Name="idPromocao" />
+          </Key>
+          <Property Name="nSerieAluguer" Type="Int32" Nullable="false" />
+          <Property Name="idPromocao" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cliente1">
+          <Key>
+            <PropertyRef Name="numero" />
+          </Key>
+          <Property Name="numero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="nif" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="morada" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Empregado1">
+          <Key>
+            <PropertyRef Name="numero" />
+            <PropertyRef Name="nome" />
+          </Key>
+          <Property Name="numero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Equipamento1">
+          <Key>
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="descricao" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Preco1">
+          <Key>
+            <PropertyRef Name="validade" />
+            <PropertyRef Name="valor" />
+            <PropertyRef Name="idEquipamento" />
+          </Key>
+          <Property Name="validade" Type="Int32" Nullable="false" />
+          <Property Name="valor" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="idEquipamento" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Promocao1">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="dataInicio" />
+            <PropertyRef Name="dataFim" />
+            <PropertyRef Name="descricao" />
+            <PropertyRef Name="tipo" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dataInicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dataFim" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="descricao" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo1">
+          <Key>
+            <PropertyRef Name="nome" />
+            <PropertyRef Name="descricao" />
+          </Key>
+          <Property Name="nome" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Aluguer__nClient__2022C2A6">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Aluguer" Type="Self.Aluguer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="numero" />
+            </Principal>
+            <Dependent Role="Aluguer">
+              <PropertyRef Name="nCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Aluguer__nEmpreg__1F2E9E6D">
+          <End Role="Empregado" Type="Self.Empregado" Multiplicity="0..1" />
+          <End Role="Aluguer" Type="Self.Aluguer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empregado">
+              <PropertyRef Name="numero" />
+            </Principal>
+            <Dependent Role="Aluguer">
+              <PropertyRef Name="nEmpregado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Aluguer_E__nSeri__2C88998B">
+          <End Role="Aluguer" Type="Self.Aluguer" Multiplicity="1" />
+          <End Role="Aluguer_Equipamento" Type="Self.Aluguer_Equipamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aluguer">
+              <PropertyRef Name="nSerie" />
+            </Principal>
+            <Dependent Role="Aluguer_Equipamento">
+              <PropertyRef Name="nSerieAluguer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Aluguer_P__nSeri__27C3E46E">
+          <End Role="Aluguer" Type="Self.Aluguer" Multiplicity="1" />
+          <End Role="Aluguer_Promocao" Type="Self.Aluguer_Promocao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aluguer">
+              <PropertyRef Name="nSerie" />
+            </Principal>
+            <Dependent Role="Aluguer_Promocao">
+              <PropertyRef Name="nSerieAluguer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Aluguer_E__codig__2D7CBDC4">
+          <End Role="Equipamento" Type="Self.Equipamento" Multiplicity="1" />
+          <End Role="Aluguer_Equipamento" Type="Self.Aluguer_Equipamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipamento">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Aluguer_Equipamento">
+              <PropertyRef Name="codigoEquipamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Aluguer_P__idPro__28B808A7">
+          <End Role="Promocao" Type="Self.Promocao" Multiplicity="1" />
+          <End Role="Aluguer_Promocao" Type="Self.Aluguer_Promocao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promocao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Aluguer_Promocao">
+              <PropertyRef Name="idPromocao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipament__tipo__11D4A34F">
+          <End Role="Tipo" Type="Self.Tipo" Multiplicity="0..1" />
+          <End Role="Equipamento" Type="Self.Equipamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo">
+              <PropertyRef Name="nome" />
+            </Principal>
+            <Dependent Role="Equipamento">
+              <PropertyRef Name="tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Preco__idEquipam__15A53433">
+          <End Role="Equipamento" Type="Self.Equipamento" Multiplicity="1" />
+          <End Role="Preco" Type="Self.Preco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipamento">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Preco">
+              <PropertyRef Name="idEquipamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SI2Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Aluguers" EntityType="Self.Aluguer" />
+          <EntitySet Name="Aluguer_Equipamento" EntityType="Self.Aluguer_Equipamento" />
+          <EntitySet Name="Aluguer_Promocao" EntityType="Self.Aluguer_Promocao" />
+          <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+          <EntitySet Name="Empregadoes" EntityType="Self.Empregado" />
+          <EntitySet Name="Equipamentoes" EntityType="Self.Equipamento" />
+          <EntitySet Name="Precoes" EntityType="Self.Preco" />
+          <EntitySet Name="Promocaos" EntityType="Self.Promocao" />
+          <EntitySet Name="Tipoes" EntityType="Self.Tipo" />
+          <EntitySet Name="Aluguer1" EntityType="Self.Aluguer1" />
+          <EntitySet Name="Aluguer_Equipamento1" EntityType="Self.Aluguer_Equipamento1" />
+          <EntitySet Name="Aluguer_Promocao1" EntityType="Self.Aluguer_Promocao1" />
+          <EntitySet Name="Cliente1" EntityType="Self.Cliente1" />
+          <EntitySet Name="Empregado1" EntityType="Self.Empregado1" />
+          <EntitySet Name="Equipamento1" EntityType="Self.Equipamento1" />
+          <EntitySet Name="Preco1" EntityType="Self.Preco1" />
+          <EntitySet Name="Promocao1" EntityType="Self.Promocao1" />
+          <EntitySet Name="Tipo1" EntityType="Self.Tipo1" />
+          <AssociationSet Name="FK__Aluguer__nClient__2022C2A6" Association="Self.FK__Aluguer__nClient__2022C2A6">
+            <End Role="Cliente" EntitySet="Clientes" />
+            <End Role="Aluguer" EntitySet="Aluguers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Aluguer__nEmpreg__1F2E9E6D" Association="Self.FK__Aluguer__nEmpreg__1F2E9E6D">
+            <End Role="Empregado" EntitySet="Empregadoes" />
+            <End Role="Aluguer" EntitySet="Aluguers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Aluguer_E__nSeri__2C88998B" Association="Self.FK__Aluguer_E__nSeri__2C88998B">
+            <End Role="Aluguer" EntitySet="Aluguers" />
+            <End Role="Aluguer_Equipamento" EntitySet="Aluguer_Equipamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Aluguer_P__nSeri__27C3E46E" Association="Self.FK__Aluguer_P__nSeri__27C3E46E">
+            <End Role="Aluguer" EntitySet="Aluguers" />
+            <End Role="Aluguer_Promocao" EntitySet="Aluguer_Promocao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Aluguer_E__codig__2D7CBDC4" Association="Self.FK__Aluguer_E__codig__2D7CBDC4">
+            <End Role="Equipamento" EntitySet="Equipamentoes" />
+            <End Role="Aluguer_Equipamento" EntitySet="Aluguer_Equipamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Aluguer_P__idPro__28B808A7" Association="Self.FK__Aluguer_P__idPro__28B808A7">
+            <End Role="Promocao" EntitySet="Promocaos" />
+            <End Role="Aluguer_Promocao" EntitySet="Aluguer_Promocao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipament__tipo__11D4A34F" Association="Self.FK__Equipament__tipo__11D4A34F">
+            <End Role="Tipo" EntitySet="Tipoes" />
+            <End Role="Equipamento" EntitySet="Equipamentoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Preco__idEquipam__15A53433" Association="Self.FK__Preco__idEquipam__15A53433">
+            <End Role="Equipamento" EntitySet="Equipamentoes" />
+            <End Role="Preco" EntitySet="Precoes" />
+          </AssociationSet>
+          <FunctionImport Name="Add_Preco">
+            <Parameter Name="idEquipamento" Mode="In" Type="Int32" />
+            <Parameter Name="validade" Mode="In" Type="Int32" />
+            <Parameter Name="valor" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Aluguer_Com_Cliente">
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+            <Parameter Name="dataInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="dataFim" Mode="In" Type="DateTime" />
+            <Parameter Name="tipo" Mode="In" Type="Int32" />
+            <Parameter Name="preco" Mode="In" Type="Decimal" />
+            <Parameter Name="nEmpregado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Aluguer_Sem_Cliente">
+            <Parameter Name="nomeCliente" Mode="In" Type="String" />
+            <Parameter Name="nifCliente" Mode="In" Type="Decimal" />
+            <Parameter Name="moradaCliente" Mode="In" Type="String" />
+            <Parameter Name="dataInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="dataFim" Mode="In" Type="DateTime" />
+            <Parameter Name="tipo" Mode="In" Type="Int32" />
+            <Parameter Name="preco" Mode="In" Type="Decimal" />
+            <Parameter Name="nEmpregado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Cliente">
+            <Parameter Name="nome" Mode="In" Type="String" />
+            <Parameter Name="nif" Mode="In" Type="Decimal" />
+            <Parameter Name="morada" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Equipamento">
+            <Parameter Name="Descricao" Mode="In" Type="String" />
+            <Parameter Name="tipo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Promocao">
+            <Parameter Name="dataInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="dataFim" Mode="In" Type="DateTime" />
+            <Parameter Name="descricao" Mode="In" Type="String" />
+            <Parameter Name="tipo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ListEquipamentosLivres" ReturnType="Collection(SI2Model.ListEquipamentosLivres_Result)">
+            <Parameter Name="tipo" Mode="In" Type="String" />
+            <Parameter Name="tempo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListNaoUsadosSemana" ReturnType="Collection(SI2Model.ListNaoUsadosSemana_Result)" />
+          <FunctionImport Name="Remove_Aluguer">
+            <Parameter Name="nSerie" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Remove_Cliente">
+            <Parameter Name="numero" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Remove_Equipamento">
+            <Parameter Name="codigo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Remove_Promocao">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Cliente">
+            <Parameter Name="numero" Mode="In" Type="Int32" />
+            <Parameter Name="nome" Mode="In" Type="String" />
+            <Parameter Name="nif" Mode="In" Type="Decimal" />
+            <Parameter Name="morada" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Equipamento">
+            <Parameter Name="codigo" Mode="In" Type="Int32" />
+            <Parameter Name="Descricao" Mode="In" Type="String" />
+            <Parameter Name="tipo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Promocao">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="dataInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="dataFim" Mode="In" Type="DateTime" />
+            <Parameter Name="descricao" Mode="In" Type="String" />
+            <Parameter Name="tipo" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="ListEquipamentosLivres_Result">
+          <Property Type="Int32" Name="codigo" Nullable="false" />
+          <Property Type="String" Name="descricao" Nullable="false" MaxLength="128" />
+        </ComplexType>
+        <ComplexType Name="ListNaoUsadosSemana_Result">
+          <Property Type="Int32" Name="codigo" Nullable="false" />
+          <Property Type="String" Name="descricao" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="64" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SI2ModelStoreContainer" CdmEntityContainer="SI2Entities1">
+          <EntitySetMapping Name="Aluguers">
+            <EntityTypeMapping TypeName="SI2Model.Aluguer">
+              <MappingFragment StoreEntitySet="Aluguer">
+                <ScalarProperty Name="nSerie" ColumnName="nSerie" />
+                <ScalarProperty Name="dataInicio" ColumnName="dataInicio" />
+                <ScalarProperty Name="dataFim" ColumnName="dataFim" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="preco" ColumnName="preco" />
+                <ScalarProperty Name="nEmpregado" ColumnName="nEmpregado" />
+                <ScalarProperty Name="nCliente" ColumnName="nCliente" />
+                <ScalarProperty Name="hidden" ColumnName="hidden" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Aluguer_Equipamento">
+            <EntityTypeMapping TypeName="SI2Model.Aluguer_Equipamento">
+              <MappingFragment StoreEntitySet="Aluguer_Equipamento">
+                <ScalarProperty Name="nSerieAluguer" ColumnName="nSerieAluguer" />
+                <ScalarProperty Name="codigoEquipamento" ColumnName="codigoEquipamento" />
+                <ScalarProperty Name="hidden" ColumnName="hidden" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Aluguer_Promocao">
+            <EntityTypeMapping TypeName="SI2Model.Aluguer_Promocao">
+              <MappingFragment StoreEntitySet="Aluguer_Promocao">
+                <ScalarProperty Name="nSerieAluguer" ColumnName="nSerieAluguer" />
+                <ScalarProperty Name="idPromocao" ColumnName="idPromocao" />
+                <ScalarProperty Name="hidden" ColumnName="hidden" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="SI2Model.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="nif" ColumnName="nif" />
+                <ScalarProperty Name="morada" ColumnName="morada" />
+                <ScalarProperty Name="hidden" ColumnName="hidden" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empregadoes">
+            <EntityTypeMapping TypeName="SI2Model.Empregado">
+              <MappingFragment StoreEntitySet="Empregado">
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="hidden" ColumnName="hidden" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipamentoes">
+            <EntityTypeMapping TypeName="SI2Model.Equipamento">
+              <MappingFragment StoreEntitySet="Equipamento">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="hidden" ColumnName="hidden" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Precoes">
+            <EntityTypeMapping TypeName="SI2Model.Preco">
+              <MappingFragment StoreEntitySet="Preco">
+                <ScalarProperty Name="validade" ColumnName="validade" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="idEquipamento" ColumnName="idEquipamento" />
+                <ScalarProperty Name="hidden" ColumnName="hidden" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promocaos">
+            <EntityTypeMapping TypeName="SI2Model.Promocao">
+              <MappingFragment StoreEntitySet="Promocao">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="dataInicio" ColumnName="dataInicio" />
+                <ScalarProperty Name="dataFim" ColumnName="dataFim" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="hidden" ColumnName="hidden" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipoes">
+            <EntityTypeMapping TypeName="SI2Model.Tipo">
+              <MappingFragment StoreEntitySet="Tipo">
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="hidden" ColumnName="hidden" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Aluguer1">
+            <EntityTypeMapping TypeName="SI2Model.Aluguer1">
+              <MappingFragment StoreEntitySet="Aluguer1">
+                <ScalarProperty Name="nSerie" ColumnName="nSerie" />
+                <ScalarProperty Name="dataInicio" ColumnName="dataInicio" />
+                <ScalarProperty Name="dataFim" ColumnName="dataFim" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="preco" ColumnName="preco" />
+                <ScalarProperty Name="nEmpregado" ColumnName="nEmpregado" />
+                <ScalarProperty Name="nCliente" ColumnName="nCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Aluguer_Equipamento1">
+            <EntityTypeMapping TypeName="SI2Model.Aluguer_Equipamento1">
+              <MappingFragment StoreEntitySet="Aluguer_Equipamento1">
+                <ScalarProperty Name="nSerieAluguer" ColumnName="nSerieAluguer" />
+                <ScalarProperty Name="codigoEquipamento" ColumnName="codigoEquipamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Aluguer_Promocao1">
+            <EntityTypeMapping TypeName="SI2Model.Aluguer_Promocao1">
+              <MappingFragment StoreEntitySet="Aluguer_Promocao1">
+                <ScalarProperty Name="nSerieAluguer" ColumnName="nSerieAluguer" />
+                <ScalarProperty Name="idPromocao" ColumnName="idPromocao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente1">
+            <EntityTypeMapping TypeName="SI2Model.Cliente1">
+              <MappingFragment StoreEntitySet="Cliente1">
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="nif" ColumnName="nif" />
+                <ScalarProperty Name="morada" ColumnName="morada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empregado1">
+            <EntityTypeMapping TypeName="SI2Model.Empregado1">
+              <MappingFragment StoreEntitySet="Empregado1">
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipamento1">
+            <EntityTypeMapping TypeName="SI2Model.Equipamento1">
+              <MappingFragment StoreEntitySet="Equipamento1">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Preco1">
+            <EntityTypeMapping TypeName="SI2Model.Preco1">
+              <MappingFragment StoreEntitySet="Preco1">
+                <ScalarProperty Name="validade" ColumnName="validade" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="idEquipamento" ColumnName="idEquipamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promocao1">
+            <EntityTypeMapping TypeName="SI2Model.Promocao1">
+              <MappingFragment StoreEntitySet="Promocao1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="dataInicio" ColumnName="dataInicio" />
+                <ScalarProperty Name="dataFim" ColumnName="dataFim" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo1">
+            <EntityTypeMapping TypeName="SI2Model.Tipo1">
+              <MappingFragment StoreEntitySet="Tipo1">
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Add_Preco" FunctionName="SI2Model.Store.Add_Preco" />
+          <FunctionImportMapping FunctionImportName="Insert_Aluguer_Com_Cliente" FunctionName="SI2Model.Store.Insert_Aluguer_Com_Cliente" />
+          <FunctionImportMapping FunctionImportName="Insert_Aluguer_Sem_Cliente" FunctionName="SI2Model.Store.Insert_Aluguer_Sem_Cliente" />
+          <FunctionImportMapping FunctionImportName="Insert_Cliente" FunctionName="SI2Model.Store.Insert_Cliente" />
+          <FunctionImportMapping FunctionImportName="Insert_Equipamento" FunctionName="SI2Model.Store.Insert_Equipamento" />
+          <FunctionImportMapping FunctionImportName="Insert_Promocao" FunctionName="SI2Model.Store.Insert_Promocao" />
+          <FunctionImportMapping FunctionImportName="ListEquipamentosLivres" FunctionName="SI2Model.Store.ListEquipamentosLivres">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SI2Model.ListEquipamentosLivres_Result">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListNaoUsadosSemana" FunctionName="SI2Model.Store.ListNaoUsadosSemana">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SI2Model.ListNaoUsadosSemana_Result">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Remove_Aluguer" FunctionName="SI2Model.Store.Remove_Aluguer" />
+          <FunctionImportMapping FunctionImportName="Remove_Cliente" FunctionName="SI2Model.Store.Remove_Cliente" />
+          <FunctionImportMapping FunctionImportName="Remove_Equipamento" FunctionName="SI2Model.Store.Remove_Equipamento" />
+          <FunctionImportMapping FunctionImportName="Remove_Promocao" FunctionName="SI2Model.Store.Remove_Promocao" />
+          <FunctionImportMapping FunctionImportName="Update_Cliente" FunctionName="SI2Model.Store.Update_Cliente" />
+          <FunctionImportMapping FunctionImportName="Update_Equipamento" FunctionName="SI2Model.Store.Update_Equipamento" />
+          <FunctionImportMapping FunctionImportName="Update_Promocao" FunctionName="SI2Model.Store.Update_Promocao" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

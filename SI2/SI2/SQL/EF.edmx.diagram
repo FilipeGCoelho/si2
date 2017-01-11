@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="44ecde6c428a4c339f545b54cf7d320b" Name="Diagram1">
+        <EntityTypeShape EntityType="SI2Model.Aluguer" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2Model.Aluguer_Equipamento" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2Model.Aluguer_Promocao" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2Model.Cliente" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2Model.Empregado" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2Model.Equipamento" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2Model.Preco" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2Model.Promocao" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2Model.Tipo" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2Model.Aluguer1" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2Model.Aluguer_Equipamento1" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2Model.Aluguer_Promocao1" Width="1.5" PointX="7.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2Model.Cliente1" Width="1.5" PointX="7.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2Model.Empregado1" Width="1.5" PointX="9.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2Model.Equipamento1" Width="1.5" PointX="9.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2Model.Preco1" Width="1.5" PointX="9.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2Model.Promocao1" Width="1.5" PointX="7.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2Model.Tipo1" Width="1.5" PointX="9.75" PointY="11.125" IsExpanded="true" />
+        <AssociationConnector Association="SI2Model.FK__Aluguer__nClient__2022C2A6" ManuallyRouted="false" />
+        <AssociationConnector Association="SI2Model.FK__Aluguer__nEmpreg__1F2E9E6D" ManuallyRouted="false" />
+        <AssociationConnector Association="SI2Model.FK__Aluguer_E__nSeri__2C88998B" ManuallyRouted="false" />
+        <AssociationConnector Association="SI2Model.FK__Aluguer_P__nSeri__27C3E46E" ManuallyRouted="false" />
+        <AssociationConnector Association="SI2Model.FK__Aluguer_E__codig__2D7CBDC4" ManuallyRouted="false" />
+        <AssociationConnector Association="SI2Model.FK__Aluguer_P__idPro__28B808A7" ManuallyRouted="false" />
+        <AssociationConnector Association="SI2Model.FK__Equipament__tipo__11D4A34F" ManuallyRouted="false" />
+        <AssociationConnector Association="SI2Model.FK__Preco__idEquipam__15A53433" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

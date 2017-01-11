@@ -89,6 +89,18 @@ namespace SI2
 
         }
 
+        public static void e_ado_insert(DateTime inicio, DateTime fim, string descricao, string tipo)
+        {
+            SqlCommand command = new SqlCommand("Insert_Promocao", Connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@dataInicio", inicio);
+            command.Parameters.AddWithValue("@dataFim", fim);
+            command.Parameters.AddWithValue("@descricao", descricao);
+            command.Parameters.AddWithValue("@tipo", tipo);
+            command.ExecuteNonQuery();
+        }
+
         public static void e_ado_remove()
         {
             SqlCommand command = new SqlCommand("Remove_Promocao", Connection);
