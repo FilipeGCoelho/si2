@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuxiliaryMethods.cs" />
+    <Compile Include="Benchmark.cs" />
     <Compile Include="MethodDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -179,7 +179,7 @@ namespace SI2
             return answer;
         }
 
-        public static void ListResult<T>(List<T> list, Func<T,string> func)
+        public static void ListResult <T> (List<T> list, Func<T,string> func)
         {
             Console.Clear();
 

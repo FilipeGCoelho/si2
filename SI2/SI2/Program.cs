@@ -8,18 +8,56 @@ namespace SI2
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             MethodDB.Init();
-            App.Init();
+            App app = new App(MappingFunctions());
             App.Run();
             App.ShutDown();
+        }
+
+        public static Dictionary<string, OperationInfo> MappingFunctions()
+        {
+            Dictionary<string, OperationInfo> operations = new Dictionary<string, OperationInfo>();
+
+            operations.Add("e1",
+                new OperationInfo("Inserir informação de promoções", MethodDB.e_ef_insert, MethodDB.e_ado_insert));
+            operations.Add("e2",
+                new OperationInfo("Remover informação de promoções", MethodDB.e_ef_remove, MethodDB.e_ado_remove));
+            operations.Add("e3",
+                new OperationInfo("Actualizar informação de promoções", MethodDB.e_ef_update, MethodDB.e_ado_update));
+
+            operations.Add("f",
+                new OperationInfo("Inserir um aluguer com inserção de um cliente com dados completos", MethodDB.f_ef,
+                    MethodDB.f_ado_net));
+
+            operations.Add("g",
+                new OperationInfo("Inserir um aluguer usando um cliente existente", MethodDB.g_ef, MethodDB.g_ado_net));
+
+            operations.Add("h", new OperationInfo("Remover um Aluguer", MethodDB.h_ef, MethodDB.h_ado_net));
+
+            operations.Add("i", new OperationInfo("Efectuar alterações de preçário", MethodDB.i_ef, MethodDB.i_ado_net));
+
+            operations.Add("j",
+                new OperationInfo("Listar todos os equipamentos livres, para um determinado tempo e tipo", MethodDB.j_ef,
+                    MethodDB.j_ado_net));
+
+            operations.Add("k",
+                new OperationInfo("Listar os equipamentos sem alugueres na última semana", MethodDB.k_ef,
+                    MethodDB.k_ado_net));
+
+            return operations;
         }
     }
 
     class App
     {
-        private static Dictionary<string, OperationInfo> operations = new Dictionary<string, OperationInfo>();
+        private static Dictionary<string, OperationInfo> operations;
+
+        public App(Dictionary<string, OperationInfo> operationInfos)
+        {
+            operations = operationInfos;
+        }
 
         public static void Run()
         {
@@ -94,37 +132,7 @@ namespace SI2
             Thread.Sleep(1500);
             Environment.Exit(0);
         }
-
-        public static void Init()
-        {
-            operations.Add("e1",
-                new OperationInfo("Inserir informação de promoções", MethodDB.e_ef_insert, MethodDB.e_ado_insert));
-            operations.Add("e2",
-                new OperationInfo("Remover informação de promoções", MethodDB.e_ef_remove, MethodDB.e_ado_remove));
-            operations.Add("e3",
-                new OperationInfo("Actualizar informação de promoções", MethodDB.e_ef_update, MethodDB.e_ado_update));
-
-            operations.Add("f",
-                new OperationInfo("Inserir um aluguer com inserção de um cliente com dados completos", MethodDB.f_ef,
-                    MethodDB.f_ado_net));
-
-            operations.Add("g",
-                new OperationInfo("Inserir um aluguer usando um cliente existente", MethodDB.g_ef, MethodDB.g_ado_net));
-
-            operations.Add("h", new OperationInfo("Remover um Aluguer", MethodDB.h_ef, MethodDB.h_ado_net));
-
-            operations.Add("i", new OperationInfo("Efectuar alterações de preçário", MethodDB.i_ef, MethodDB.i_ado_net));
-
-            operations.Add("j",
-                new OperationInfo("Listar todos os equipamentos livres, para um determinado tempo e tipo", MethodDB.j_ef,
-                    MethodDB.j_ado_net));
-
-            operations.Add("k",
-                new OperationInfo("Listar os equipamentos sem alugueres na última semana", MethodDB.k_ef,
-                    MethodDB.k_ado_net));
-        }
     }
-
 
     public delegate void MethodDelegate();
 

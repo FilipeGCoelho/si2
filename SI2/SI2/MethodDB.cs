@@ -43,10 +43,20 @@ namespace SI2
             DB.Insert_Promocao(inicio, fim, descricao, tipo);
         }
 
+        public static void e_ef_insert(DateTime inicio, DateTime fim, string descricao, string tipo)
+        {
+            DB.Insert_Promocao(inicio, fim, descricao, tipo);
+        }
+
         public static void e_ef_remove()
         {
             int id = AuxiliaryMethods.GetVariableInt("Id");
 
+            DB.Remove_Promocao(id);
+        }
+
+        public static void e_ef_remove(int id)
+        {
             DB.Remove_Promocao(id);
         }
 
@@ -58,6 +68,11 @@ namespace SI2
             string descricao = AuxiliaryMethods.GetVariable("Descricao");
             string tipo = AuxiliaryMethods.GetVariable("Tipo", "tempo ou desconto");
 
+            DB.Update_Promocao(id, inicio, fim, descricao, tipo);
+        }
+
+        public static void e_ef_update(int id, DateTime inicio, DateTime fim, string descricao, string tipo)
+        {
             DB.Update_Promocao(id, inicio, fim, descricao, tipo);
         }
 
@@ -119,6 +134,17 @@ namespace SI2
             DB.Insert_Aluguer_Com_Cliente(id, inicio, fim, tipo, preco, empregado);
         }
 
+        public static void f_ef(string nome, decimal nif, string morada, DateTime inicio, DateTime fim, int tipo, decimal preco, int empregado)
+        {
+            DB.Insert_Cliente(nome, nif, morada);
+
+            int id = DB.Clientes
+                .Where(p => p.nif == nif && p.nome == nome && p.morada == morada)
+                .First().numero;
+
+            DB.Insert_Aluguer_Com_Cliente(id, inicio, fim, tipo, preco, empregado);
+        }
+
         public static void f_ado_net()
         {
 
@@ -137,6 +163,11 @@ namespace SI2
             DB.Insert_Aluguer_Com_Cliente(id, inicio, fim, tipo, preco, empregado);
         }
 
+        public static void g_ef(int id, DateTime inicio, DateTime fim, int tipo, decimal preco, int empregado)
+        {
+            DB.Insert_Aluguer_Com_Cliente(id, inicio, fim, tipo, preco, empregado);
+        }
+
         public static void g_ado_net()
         {
 
@@ -147,6 +178,11 @@ namespace SI2
         {
             int nSerie = AuxiliaryMethods.GetVariableInt("Numero de serie", "id do aluguer");
 
+            DB.Remove_Aluguer(nSerie);
+        }
+
+        public static void h_ef(int nSerie)
+        { 
             DB.Remove_Aluguer(nSerie);
         }
 
@@ -179,6 +215,15 @@ namespace SI2
             DB.Add_Preco(idEquipamento, validade, valor);
         }
 
+        public static void i_ef(int idEquipamento, decimal valor)
+        {
+            int validade = DB.Preco1
+                                .Where(p => p.idEquipamento == idEquipamento)
+                                .First().validade;
+
+            DB.Add_Preco(idEquipamento, validade, valor);
+        }
+
         public static void i_ado_net()
         {
 
@@ -195,6 +240,11 @@ namespace SI2
             AuxiliaryMethods.ListResult<ListEquipamentosLivres_Result>(lst, i => { return string.Format("codigo: {0}, descrição: {1}",i.codigo, i.descricao); });
         }
 
+        public static void j_ef(int minutos, string tipo)
+        {
+            List<ListEquipamentosLivres_Result> lst = DB.ListEquipamentosLivres(tipo, minutos).ToList();
+        }
+
         public static void j_ado_net()
         {
 
@@ -207,7 +257,7 @@ namespace SI2
 
             AuxiliaryMethods.ListResult(lst, x => {return String.Format("Descrição: {0}, Codigo: {1}, Tipo: {2}",x.descricao, x.codigo, x.tipo);});
         }
-
+        
         public static void k_ado_net()
         {
 
