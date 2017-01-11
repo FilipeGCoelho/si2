@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Threading;
+using SI2.SQL;
 
 namespace SI2
 {
@@ -96,11 +98,11 @@ namespace SI2
         public static void Init()
         {
             operations.Add("e1",
-                new OperationInfo("Inserir informação de promoções", MethodDB.e_ef, MethodDB.e_ado_insert));
+                new OperationInfo("Inserir informação de promoções", MethodDB.e_ef_insert, MethodDB.e_ado_insert));
             operations.Add("e2",
-                new OperationInfo("Remover informação de promoções", MethodDB.e_ef, MethodDB.e_ado_remove));
+                new OperationInfo("Remover informação de promoções", MethodDB.e_ef_remove, MethodDB.e_ado_remove));
             operations.Add("e3",
-                new OperationInfo("Actualizar informação de promoções", MethodDB.e_ef, MethodDB.e_ado_update));
+                new OperationInfo("Actualizar informação de promoções", MethodDB.e_ef_update, MethodDB.e_ado_update));
 
             operations.Add("f",
                 new OperationInfo("Inserir um aluguer com inserção de um cliente com dados completos", MethodDB.f_ef,

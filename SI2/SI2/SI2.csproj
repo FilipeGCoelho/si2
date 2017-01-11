@@ -33,8 +33,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,9 +58,107 @@
     <Compile Include="MethodDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQL\Aluguer.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\Aluguer1.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\Aluguer_Equipamento.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\Aluguer_Equipamento1.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\Aluguer_Promocao.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\Aluguer_Promocao1.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\Cliente.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\Cliente1.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\EF.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EF.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\EF.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\EF.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EF.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\Empregado.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\Empregado1.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\Equipamento.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\Equipamento1.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\ListEquipamentosLivres_Result.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\ListNaoUsadosSemana_Result.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\Preco.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\Preco1.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\Promocao.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\Promocao1.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\Tipo.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\Tipo1.cs">
+      <DependentUpon>EF.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+    <EntityDeploy Include="SQL\EF.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EF.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="SQL\EF.edmx.diagram">
+      <DependentUpon>EF.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SQL\EF.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EF.edmx</DependentUpon>
+      <LastGenOutput>EF.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SQL\EF.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EF.edmx</DependentUpon>
+      <LastGenOutput>EF.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
