@@ -16,7 +16,7 @@ namespace SI2
     class MethodDB
     {
         private static readonly string ConnectionString = "user id=si2;password=si2;database=SI2;";
-        private static readonly SqlConnection Connection = new SqlConnection(ConnectionString);
+        public static readonly SqlConnection Connection = new SqlConnection(ConnectionString);
         
         private static SI2Entities1 DB = new SI2Entities1();
 
@@ -108,16 +108,17 @@ namespace SI2
             command.ExecuteNonQuery();
         }
 
-        public static void e_ado_insert(DateTime inicio, DateTime fim, string descricao, string tipo)
+        public static void e_ado_insert(string inicio, string fim, string descricao, string tipo)
         {
             SqlCommand command = new SqlCommand("Insert_Promocao", Connection);
             command.CommandType = CommandType.StoredProcedure;
-
+            
             command.Parameters.AddWithValue("@dataInicio", inicio);
             command.Parameters.AddWithValue("@dataFim", fim);
             command.Parameters.AddWithValue("@descricao", descricao);
             command.Parameters.AddWithValue("@tipo", tipo);
             command.ExecuteNonQuery();
+            
         }
 
         public static void e_ado_remove()

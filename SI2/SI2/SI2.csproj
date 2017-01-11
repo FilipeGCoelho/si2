@@ -134,6 +134,7 @@
     <Compile Include="SQL\Tipo1.cs">
       <DependentUpon>EF.tt</DependentUpon>
     </Compile>
+    <Compile Include="XMLExporter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
