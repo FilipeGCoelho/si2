@@ -13,14 +13,16 @@ namespace SI2
         {
             Console.Write(name + ": ");
 
-            return Console.ReadLine();
+            string s = Console.ReadLine();
+            return s == "" ? null : s;
         }
 
         public static string GetVariable(string name, string instructions)
         {
             Console.Write(name + "(" + instructions + "): ");
 
-            return Console.ReadLine();
+            string s = Console.ReadLine();
+            return s == "" ? null : s;
         }
 
         public static int GetVariableInt(string name, string instructions)

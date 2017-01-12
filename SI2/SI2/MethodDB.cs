@@ -100,8 +100,8 @@ namespace SI2
             SqlCommand command = new SqlCommand("Insert_Promocao", Connection);
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@dataInicio", AuxiliaryMethods.GetVariable("Data de Inicio"));
-            command.Parameters.AddWithValue("@dataFim", AuxiliaryMethods.GetVariable("Data de Fim"));
+            command.Parameters.AddWithValue("@dataInicio", AuxiliaryMethods.GetVariableDate("Data de Inicio"));
+            command.Parameters.AddWithValue("@dataFim", AuxiliaryMethods.GetVariableDate("Data de Fim"));
             command.Parameters.AddWithValue("@descricao", AuxiliaryMethods.GetVariable("Descricao"));
             command.Parameters.AddWithValue("@tipo", AuxiliaryMethods.GetVariable("Tipo", "tempo ou desconto"));
 
@@ -126,17 +126,17 @@ namespace SI2
             SqlCommand command = new SqlCommand("Remove_Promocao", Connection);
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@id", AuxiliaryMethods.GetVariable("ID"));
+            command.Parameters.AddWithValue("@id", AuxiliaryMethods.GetVariableInt("ID"));
 
             command.ExecuteNonQuery();
         }
 
         public static void e_ado_update()
         {
-            SqlCommand command = new SqlCommand("Insert_Promocao", Connection);
+            SqlCommand command = new SqlCommand("Update_Promocao", Connection);
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@id", AuxiliaryMethods.GetVariable("ID"));
+            command.Parameters.AddWithValue("@id", AuxiliaryMethods.GetVariableInt("ID"));
             command.Parameters.AddWithValue("@dataInicio", AuxiliaryMethods.GetVariable("Data de Inicio"));
             command.Parameters.AddWithValue("@dataFim", AuxiliaryMethods.GetVariable("Data de Fim"));
             command.Parameters.AddWithValue("@descricao", AuxiliaryMethods.GetVariable("Descricao"));
@@ -186,7 +186,7 @@ namespace SI2
 
             Console.WriteLine("-----Dados do Cliente-----\n");
             command.Parameters.AddWithValue("@nomeCliente", AuxiliaryMethods.GetVariable("Nome"));
-            command.Parameters.AddWithValue("@nifCliente", AuxiliaryMethods.GetVariable("NIF"));
+            command.Parameters.AddWithValue("@nifCliente", AuxiliaryMethods.GetVariableInt("NIF"));
             command.Parameters.AddWithValue("@moradaCliente", AuxiliaryMethods.GetVariable("Morada"));
 
             Console.WriteLine("\n-----Dados do Aluguer-----\n");
@@ -219,7 +219,7 @@ namespace SI2
             command.CommandType = CommandType.StoredProcedure;
 
             Console.WriteLine("-----Dados do Cliente-----\n");
-            command.Parameters.AddWithValue("@idCliente", AuxiliaryMethods.GetVariable("ID"));
+            command.Parameters.AddWithValue("@idCliente", AuxiliaryMethods.GetVariableInt("ID"));
 
             Console.WriteLine("\n-----Dados do Aluguer-----\n");
             GetAluguerParameters(command);
@@ -243,7 +243,7 @@ namespace SI2
             SqlCommand command = new SqlCommand("Remove_Aluguer", Connection);
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@nSerie", AuxiliaryMethods.GetVariable("ID do Aluguer"));
+            command.Parameters.AddWithValue("@nSerie", AuxiliaryMethods.GetVariableInt("ID do Aluguer"));
 
             command.ExecuteNonQuery();
 
@@ -287,9 +287,9 @@ namespace SI2
             SqlCommand command = new SqlCommand("Add_Preco", Connection);
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@idEquipamento", AuxiliaryMethods.GetVariable("ID do Equipamento"));
-            command.Parameters.AddWithValue("@validade", AuxiliaryMethods.GetVariable("Validade"));
-            command.Parameters.AddWithValue("@valor", AuxiliaryMethods.GetVariable("Valor"));
+            command.Parameters.AddWithValue("@idEquipamento", AuxiliaryMethods.GetVariableInt("ID do Equipamento"));
+            command.Parameters.AddWithValue("@validade", AuxiliaryMethods.GetVariableInt("Validade"));
+            command.Parameters.AddWithValue("@valor", AuxiliaryMethods.GetVariableDecimal("Valor"));
 
             command.ExecuteNonQuery();
         }
@@ -316,7 +316,7 @@ namespace SI2
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@tipo", AuxiliaryMethods.GetVariable("Tipo"));
-            command.Parameters.AddWithValue("@tempo", AuxiliaryMethods.GetVariable("Duracao"));
+            command.Parameters.AddWithValue("@tempo", AuxiliaryMethods.GetVariableInt("Duracao", "Em minutos"));
             Console.Clear();
 
             using (SqlDataReader dr = command.ExecuteReader())

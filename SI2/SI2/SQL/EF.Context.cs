@@ -24,12 +24,6 @@ namespace SI2.SQL
         {
             
         }
-
-        public SI2Entities1(string connectionString)
-            : base(new EntityConnection(connectionString), true)
-        {
-            
-        }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

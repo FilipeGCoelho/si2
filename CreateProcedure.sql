@@ -123,16 +123,47 @@ go
 go
 create procedure Update_Promocao
 	@id INT,
-	@dataInicio DATE,
-	@dataFim DATE,
-	@descricao VARCHAR(128),
-	@tipo VARCHAR(8)
+	@dataInicio DATE = null,
+	@dataFim DATE = null,
+	@descricao VARCHAR(128) = null,
+	@tipo VARCHAR(8) = null
 
 as
-	Update Promocao
-	set datainicio = @datainicio,  dataFim = @dataFim, descricao = @Descricao, tipo = @tipo
-	where id = @id
+	begin tran
+		begin try
+		IF @dataInicio is not null
+		begin
+			update Promocao
+			set dataInicio = @dataInicio
+			where id = @id
+		end
 
+		IF @dataFim is not null
+		begin
+			update Promocao
+			set dataFim = @dataFim
+			where id = @id
+		end
+
+		IF @descricao is not null
+			begin
+				update Promocao
+				set descricao = @descricao
+				where id = @id
+			end
+		IF @tipo is not null
+			begin
+				update Promocao
+				set tipo = @tipo
+				where id = @id
+			end
+		commit
+		end try
+
+		begin catch
+			rollback
+		end catch
+	
 go
 
 

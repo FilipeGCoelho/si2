@@ -16,10 +16,10 @@ namespace SI2
 
             using (SqlCommand sqlComm = new SqlCommand(strSql, con))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter(sqlComm,);
+                SqlDataAdapter adapter = new SqlDataAdapter(sqlComm);
                 DataSet ds = new DataSet();
                 adapter.Fill(ds);
-                ds.Tables[0].WriteXml(@"C:\Temp\text.xml");
+                ds.Tables[0].WriteXml("text.xml");
             }
         }
     }

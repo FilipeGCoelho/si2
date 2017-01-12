@@ -79,7 +79,7 @@ namespace SI2
             Console.WriteLine("q.  Benchmark");
             Console.WriteLine("x.  Alugueres to XML");
 
-            Console.Write("0.  Exit\n\nAnswer: ");
+            Console.Write("0.  Exit\n\nOption: ");
         }
 
         private static void Listen()
@@ -144,7 +144,7 @@ namespace SI2
         {
             Console.Clear();
             Console.WriteLine("leaving ...");
-            Thread.Sleep(1500);
+            Thread.Sleep(500);
             MethodDB.CloseConnection();
             Environment.Exit(0);
         }
