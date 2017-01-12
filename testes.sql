@@ -54,7 +54,7 @@ select * from Promocao
 -- update
 
 select * from Promocao
-exec Update_Promocao 1, '', null, 'descPromo ', null
+exec Update_Promocao 1, '2016-01-01' , '2018-01-01', 'descPromo teste', 'desconto'
 select * from Promocao
 
 -- remove
