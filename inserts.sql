@@ -1,3 +1,6 @@
+select * from Cliente
+select * from dbb.Aluguer
+exec Remove_Cliente 2
 
 use si2;
 
