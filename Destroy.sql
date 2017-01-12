@@ -38,6 +38,7 @@ IF OBJECT_ID('Remove_Aluguer', 'P') IS NOT NULL DROP PROC Remove_Aluguer;
 IF OBJECT_ID('Add_Preco', 'P') IS NOT NULL DROP PROC Add_Preco;
 IF OBJECT_ID('ListNaoUsadosSemana', 'P') IS NOT NULL DROP PROC ListNaoUsadosSemana
 IF OBJECT_ID('ListEquipamentosLivres', 'P') IS NOT NULL DROP PROC ListEquipamentosLivres;
+IF OBJECT_ID('ListAlugueresBetween', 'P') IS NOT NULL DROP PROC ListAlugueresBetween;
 
 IF SCHEMA_ID('dbb') IS NOT NULL DROP SCHEMA dbb;
 

@@ -95,7 +95,7 @@ namespace SI2
 
             if (answer_command == "x")
             {
-                XMLExporter.AlugueresToXML(MethodDB.Connection);
+                XmlExporter.AlugueresToXml(MethodDB.Connection);
                 return;
             }
 

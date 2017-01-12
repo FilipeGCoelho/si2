@@ -356,3 +356,21 @@ as
 		on nSerie = nSerieAluguer) as t2
 	on codigo <> codigoEquipamento
 go
+
+--extra
+--Listar os alugueres entre datas
+
+
+
+go
+create procedure ListAlugueresBetween
+	@dataInicio DATE,
+	@dataFim DATE
+as
+	select nSerie, tipoEquipamento, nCliente, codigo, dataInicio, dataFim
+	from Aluguer inner join (
+		(select nSerieAluguer, codigo, tipo as tipoEquipamento
+		from Aluguer_Equipamento inner join Equipamento on codigo = codigoEquipamento)) as t1
+	on nSerie = nSerieAluguer
+	where (dataInicio between @dataInicio AND @dataFim) AND (dataFim between @dataInicio AND @dataFim)
+go

@@ -173,8 +173,7 @@ namespace SI2
             DB.Insert_Cliente(nome, nif, morada);
 
             int id = DB.Clientes
-                .Where(p => p.nif == nif && p.nome == nome && p.morada == morada)
-                .First().numero;
+                .First(p => p.nif == nif && p.nome == nome && p.morada == morada).numero;
 
             DB.Insert_Aluguer_Com_Cliente(id, inicio, fim, tipo, preco, empregado);
         }
@@ -259,8 +258,7 @@ namespace SI2
             try
             {
                 validade = DB.Preco1
-                    .Where(p => p.idEquipamento == idEquipamento)
-                    .First().validade;
+                    .First(p => p.idEquipamento == idEquipamento).validade;
             }
             catch (Exception e)
             {
@@ -276,8 +274,7 @@ namespace SI2
         public static void i_ef(int idEquipamento, decimal valor)
         {
             int validade = DB.Preco1
-                                .Where(p => p.idEquipamento == idEquipamento)
-                                .First().validade;
+                                .First(p => p.idEquipamento == idEquipamento).validade;
 
             DB.Add_Preco(idEquipamento, validade, valor);
         }
