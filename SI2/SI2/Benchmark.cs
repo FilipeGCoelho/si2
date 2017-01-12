@@ -18,6 +18,8 @@ namespace SI2
 
 //            bench_f();
 //            bench_g();
+
+            bench_h();
         }
 
         private static void bench_e1()
@@ -191,37 +193,28 @@ namespace SI2
             string fim = "2017-06-06";
             string descrição = "desc_benchmark";
             int tipo = 1;
-            string nome = "xxxxxxxx";
-            decimal nif = 32.3M;
-            string morada = "yyyyyyyyyyyy";
             decimal preco = 321313.12M;
             int empregado = 1;
-            int nserie;
-            int ncliente;
 
-            MethodDB.DB.Insert_Cliente(nome, nif, morada);
-            ncliente = MethodDB.DB.Cliente1.First(p => p.nif == nif && p.nome == nome).numero;
+            MethodDB.DB.Insert_Aluguer_Com_Cliente(1, DateTime.Parse(inicio), DateTime.Parse(fim), tipo, preco, 1);
+            int nAluguer = MethodDB.DB.Aluguer1.First(p => p.nCliente == p.nCliente && p.preco == preco).nSerie;
 
             long init = DateTime.Now.Ticks;
-            MethodDB.g_ef(ncliente, DateTime.Parse(inicio), DateTime.Parse(fim), tipo, preco, 1);
+            MethodDB.h_ef(nAluguer);
             long end = DateTime.Now.Ticks;
-
+            
             long ef = end - init;
 
-            nserie = MethodDB.DB.Aluguer1.First(p => p.nCliente == ncliente).nSerie;
-            MethodDB.DB.Remove_Aluguer(nserie);
+            MethodDB.DB.Insert_Aluguer_Com_Cliente(1, DateTime.Parse(inicio), DateTime.Parse(fim), tipo, preco, 1);
+            nAluguer = MethodDB.DB.Aluguer1.First(p => p.nCliente == p.nCliente && p.preco == preco).nSerie;
 
             init = DateTime.Now.Ticks;
-            MethodDB.g_ado_net(ncliente, DateTime.Parse(inicio), DateTime.Parse(fim), tipo, preco, 1);
+            MethodDB.h_ado_net(nAluguer);
             end = DateTime.Now.Ticks;
-
-            nserie = MethodDB.DB.Aluguer1.First(p => p.nCliente == ncliente).nSerie;
-            MethodDB.DB.Remove_Aluguer(nserie);
-            MethodDB.DB.Remove_Cliente(ncliente);
 
             long ado = end - init;
 
-            PrintDiff(dic["g"].phrase, ef, ado);
+            PrintDiff(dic["h"].phrase, ef, ado);
         }
 
         private static void PrintDiff(string desc, long ef, long ado)
