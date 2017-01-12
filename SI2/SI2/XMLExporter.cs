@@ -13,8 +13,8 @@ namespace SI2
     {
         public static void AlugueresToXml(SqlConnection con)
         {
-            DateTime inicio = new DateTime(2015,01,01); //AuxiliaryMethods.GetVariableDate("Data Inicial");
-            DateTime fim = new DateTime(2020, 01, 01); //AuxiliaryMethods.GetVariableDate("Data Final");
+            DateTime inicio = AuxiliaryMethods.GetVariableDate("Data Inicial");
+            DateTime fim = AuxiliaryMethods.GetVariableDate("Data Final");
 
             using (SqlCommand sqlComm = new SqlCommand("ListAlugueresBetween", con))
             {
@@ -29,8 +29,13 @@ namespace SI2
                 adapter.Fill(ds);
 
                 Console.Clear();
-                ProcessTable(ds, inicio, fim);
+                if (ds.Tables[0].Rows.Count == 0)
+                {
+                    Console.WriteLine("Sem resultados");
+                }
+                else {ProcessTable(ds, inicio, fim);
                 Console.WriteLine("\nPress any key to continue ...");
+}
                 Console.ReadKey();
             }
         }
@@ -46,12 +51,11 @@ namespace SI2
                 alugueres.alugueres.Add(new Aluguer(
                     row["aluguerId"].ToString(),
                     row["tipoEquipamento"].ToString(),
-                    row["clienteId"].ToString(), 
+                    row["clienteId"].ToString(),
                     row["codigoEquipamento"].ToString()));
             }
 
             System.IO.File.WriteAllText("text.xml", alugueres.ToString());
-//            Console.WriteLine(alugueres);
         }
     }
 
@@ -62,7 +66,10 @@ namespace SI2
 
         public override string ToString()
         {
-            return String.Format("<xml>\n  <alugueres dataInicio= \"{0}\" dataFim= \"{1}\" >{2}\n\n  </alugueres>\n</xml>", inicio,fim,Alugueres_toString());
+            return
+                String.Format(
+                    "<xml>\n  <alugueres dataInicio= \"{0}\" dataFim= \"{1}\" >{2}\n\n  </alugueres>\n</xml>", inicio,
+                    fim, Alugueres_toString());
         }
 
         public string Alugueres_toString()
