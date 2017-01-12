@@ -18,21 +18,7 @@ namespace SI2
         private static readonly string ConnectionString = "user id=si2;password=si2;database=SI2;";
         public static readonly SqlConnection Connection = new SqlConnection(ConnectionString);
         
-        private static SI2Entities1 DB = new SI2Entities1();
-
-//        public static String GetEntityString()
-//        {
-//
-//            SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder();
-//            sqlBuilder.DataSource = "DESKTOP - EHJ4FO6";
-//            sqlBuilder.InitialCatalog = "SI2";
-//
-//            EntityConnectionStringBuilder entityConnectionBuilder = new EntityConnectionStringBuilder();
-//
-//            entityConnectionBuilder.Provider = sqlBuilder.ToString();
-//            
-//            return entityConnection.ToString();
-//        }
+        public static SI2Entities1 DB = new SI2Entities1();
 
         public static void Init()
         {
@@ -64,8 +50,6 @@ namespace SI2
         {
             DB.Insert_Promocao(inicio, fim, descricao, tipo);
         }
-
-
 
         public static void e_ef_remove()
         {
@@ -131,6 +115,16 @@ namespace SI2
             command.ExecuteNonQuery();
         }
 
+        public static void e_ado_remove(int id)
+        {
+            SqlCommand command = new SqlCommand("Remove_Promocao", Connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@id", id);
+
+            command.ExecuteNonQuery();
+        }
+
         public static void e_ado_update()
         {
             SqlCommand command = new SqlCommand("Update_Promocao", Connection);
@@ -141,6 +135,20 @@ namespace SI2
             command.Parameters.AddWithValue("@dataFim", AuxiliaryMethods.GetVariable("Data de Fim"));
             command.Parameters.AddWithValue("@descricao", AuxiliaryMethods.GetVariable("Descricao"));
             command.Parameters.AddWithValue("@tipo", AuxiliaryMethods.GetVariable("Tipo", "tempo ou desconto"));
+
+            command.ExecuteNonQuery();
+        }
+
+        public static void e_ado_update(int id, DateTime inicio, DateTime fim, string descricao, string tipo)
+        {
+            SqlCommand command = new SqlCommand("Update_Promocao", Connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@dataInicio", inicio);
+            command.Parameters.AddWithValue("@dataFim", fim);
+            command.Parameters.AddWithValue("@descricao", descricao);
+            command.Parameters.AddWithValue("@tipo", tipo);
 
             command.ExecuteNonQuery();
         }
@@ -156,8 +164,7 @@ namespace SI2
             Console.WriteLine();
 
             int id = DB.Clientes
-                .Where(p => p.nif == nif && p.nome == nome && p.morada == morada)
-                .First().numero;
+                .First(p => p.nif == nif && p.nome == nome && p.morada == morada).numero;
 
             DateTime inicio = DateTime.Parse(AuxiliaryMethods.GetVariable("Data de Inicio"));
             DateTime fim = DateTime.Parse(AuxiliaryMethods.GetVariable("Data de Fim"));
@@ -173,7 +180,7 @@ namespace SI2
             DB.Insert_Cliente(nome, nif, morada);
 
             int id = DB.Clientes
-                .First(p => p.nif == nif && p.nome == nome && p.morada == morada).numero;
+                .First(p => p.nome == nome && p.morada == morada).numero;
 
             DB.Insert_Aluguer_Com_Cliente(id, inicio, fim, tipo, preco, empregado);
         }
@@ -193,6 +200,24 @@ namespace SI2
 
             command.ExecuteNonQuery();
         }
+
+        public static void f_ado_net(string nome, decimal nif, string morada, DateTime inicio, DateTime fim, int tipo, decimal preco, int empregado)
+        {
+            SqlCommand command = new SqlCommand("Insert_Aluguer_Sem_Cliente", Connection);
+            command.CommandType = CommandType.StoredProcedure;
+            
+            command.Parameters.AddWithValue("@nomeCliente", nome);
+            command.Parameters.AddWithValue("@nifCliente", nif);
+            command.Parameters.AddWithValue("@moradaCliente", morada);
+            command.Parameters.AddWithValue("@dataInicio", inicio);
+            command.Parameters.AddWithValue("@dataFim", fim);
+            command.Parameters.AddWithValue("@tipo", tipo);
+            command.Parameters.AddWithValue("@preco", preco);
+            command.Parameters.AddWithValue("@nEmpregado", empregado);
+
+            command.ExecuteNonQuery();
+        }
+
 
         //Inserir um aluguer usando um cliente existente;
         public static void g_ef()
@@ -222,6 +247,23 @@ namespace SI2
 
             Console.WriteLine("\n-----Dados do Aluguer-----\n");
             GetAluguerParameters(command);
+
+            command.ExecuteNonQuery();
+        }
+
+        public static void g_ado_net(int id, DateTime inicio, DateTime fim, int tipo, decimal preco, int empregado)
+        {
+            SqlCommand command = new SqlCommand("Insert_Aluguer_Com_Cliente", Connection);
+            command.CommandType = CommandType.StoredProcedure;
+            
+            command.Parameters.AddWithValue("@idCliente", id);
+            command.Parameters.AddWithValue("@dataInicio", inicio);
+            command.Parameters.AddWithValue("@dataFim", fim);
+            command.Parameters.AddWithValue("@tipo", tipo);
+            command.Parameters.AddWithValue("@preco", preco);
+            command.Parameters.AddWithValue("@nEmpregado", empregado);
+
+            command.ExecuteNonQuery();
         }
 
         //Remover Aluguer

@@ -49,7 +49,7 @@ go
 create trigger Delete_Cliente_Trigger on Cliente 
 instead of delete
 as
-	if (select COUNT(*) from deleted inner join Aluguer on numero = nCliente) = 0
+	if (select COUNT(*) from deleted inner join dbb.Aluguer on numero = nCliente) = 0
 		DELETE FROM Cliente WHERE (select numero from deleted) = numero;
 	
 	else UPDATE dbb.Cliente set hidden = 1 where numero = (select numero from deleted);
