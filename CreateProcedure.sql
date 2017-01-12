@@ -367,7 +367,7 @@ create procedure ListAlugueresBetween
 	@dataInicio DATE,
 	@dataFim DATE
 as
-	select nSerie, tipoEquipamento, nCliente, codigo, dataInicio, dataFim
+	select nSerie as aluguerId, tipoEquipamento, nCliente as clienteId, codigo as codigoEquipamento
 	from Aluguer inner join (
 		(select nSerieAluguer, codigo, tipo as tipoEquipamento
 		from Aluguer_Equipamento inner join Equipamento on codigo = codigoEquipamento)) as t1

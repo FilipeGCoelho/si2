@@ -146,7 +146,7 @@
     <None Include="SQL\EF.edmx.diagram">
       <DependentUpon>EF.edmx</DependentUpon>
     </None>
-    <None Include="XMLSchema.xsd">
+    <None Include="SI2Schema.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

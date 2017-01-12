@@ -13,40 +13,56 @@ namespace SI2
     {
         public static void AlugueresToXml(SqlConnection con)
         {
-            const string strSql = "select * from Aluguer";
-            DateTime inicio = AuxiliaryMethods.GetVariableDate("Data Inicial");
-            DateTime fim = AuxiliaryMethods.GetVariableDate("Data Final");
+            DateTime inicio = new DateTime(2015,01,01); //AuxiliaryMethods.GetVariableDate("Data Inicial");
+            DateTime fim = new DateTime(2020, 01, 01); //AuxiliaryMethods.GetVariableDate("Data Final");
 
-            using (SqlCommand sqlComm = new SqlCommand(strSql, con))
+            using (SqlCommand sqlComm = new SqlCommand("ListAlugueresBetween", con))
             {
+                sqlComm.Parameters.AddWithValue("@dataInicio", inicio);
+                sqlComm.Parameters.AddWithValue("@datafim", fim);
+                sqlComm.CommandType = CommandType.StoredProcedure;
+
+
                 SqlDataAdapter adapter = new SqlDataAdapter(sqlComm);
                 DataSet ds = new DataSet();
+                adapter.SelectCommand = sqlComm;
                 adapter.Fill(ds);
 
-
-                ds.Tables[0].WriteXml("text.xml");
+                Console.Clear();
+                ProcessTable(ds, inicio, fim);
+                Console.WriteLine("\nPress any key to continue ...");
+                Console.ReadKey();
             }
         }
 
-        public static void ProcessTable(DataSet ds)
+        public static void ProcessTable(DataSet ds, DateTime inicio, DateTime fim)
         {
             Alugueres alugueres = new Alugueres();
+            alugueres.fim = fim.ToShortDateString();
+            alugueres.inicio = inicio.ToShortDateString();
 
             foreach (var row in ds.Tables[0].AsEnumerable())
             {
-                alugueres.alugueres.Add(new Aluguer(1,"",1,1));
+                alugueres.alugueres.Add(new Aluguer(
+                    row["aluguerId"].ToString(),
+                    row["tipoEquipamento"].ToString(),
+                    row["clienteId"].ToString(), 
+                    row["codigoEquipamento"].ToString()));
             }
+
+            System.IO.File.WriteAllText("text.xml", alugueres.ToString());
+//            Console.WriteLine(alugueres);
         }
     }
 
     class Alugueres
     {
         public string inicio, fim;
-        public List<Aluguer> alugueres;
+        public List<Aluguer> alugueres = new List<Aluguer>();
 
         public override string ToString()
         {
-            return String.Format("<alugueres dataInicio= \"{0}\" dataFim= \"{1}\" >{2}\n\n</alugueres>", inicio,fim,Alugueres_toString());
+            return String.Format("<xml>\n  <alugueres dataInicio= \"{0}\" dataFim= \"{1}\" >{2}\n\n  </alugueres>\n</xml>", inicio,fim,Alugueres_toString());
         }
 
         public string Alugueres_toString()
@@ -55,31 +71,34 @@ namespace SI2
 
             foreach (Aluguer aluguer in alugueres)
             {
-                toReturn += "\n\n" + aluguer.ToString();
+                toReturn += "\n\n" + aluguer;
             }
 
-            return ToString();
+            return toReturn;
         }
     }
 
     class Aluguer
     {
-        private int id;
+        private string id;
         private string equipamento;
-        private int nrCliente;
-        private int codigo_equipamento;
+        private string nrCliente;
+        private string codigo_equipamento;
 
         public override string ToString()
         {
             return
-                String.Format("<aluguer id = \"{0}\" tipo = \"{1}\" >\n<cliente>{2}</cliente>\n<equipamento>{3}</equipamento>\n</aluguer>",
+                string.Format("  <aluguer id = \"{0}\" tipo = \"{1}\" >\n" +
+                              "    <cliente>{2}</cliente>\n" +
+                              "    <equipamento>{3}</equipamento>\n" +
+                              "  </aluguer>",
                     id,
                     equipamento,
                     nrCliente,
                     codigo_equipamento);
         }
 
-        public Aluguer(int id, string equipamento, int nrc, int cod_eq)
+        public Aluguer(string id, string equipamento, string nrc, string cod_eq)
         {
             this.id = id;
             this.equipamento = equipamento;
