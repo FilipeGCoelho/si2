@@ -287,6 +287,16 @@ namespace SI2
             command.Parameters.AddWithValue("@nSerie", AuxiliaryMethods.GetVariableInt("ID do Aluguer"));
 
             command.ExecuteNonQuery();
+        }
+
+        public static void h_ado_net(int nSerie)
+        {
+            SqlCommand command = new SqlCommand("Remove_Aluguer", Connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@nSerie", nSerie);
+
+            command.ExecuteNonQuery();
 
         }
 
