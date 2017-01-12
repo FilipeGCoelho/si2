@@ -49,7 +49,7 @@ go
 create trigger Delete_Cliente_Trigger on Cliente 
 instead of delete
 as
-	if (select COUNT(*) from deleted inner join Aluguer on numero = nCliente) = 0
+	if (select COUNT(*) from deleted inner join dbb.Aluguer on numero = nCliente) = 0
 		DELETE FROM Cliente WHERE (select numero from deleted) = numero;
 	
 	else UPDATE dbb.Cliente set hidden = 1 where numero = (select numero from deleted);
@@ -96,8 +96,8 @@ go
 create trigger Delete_Equipamento_Trigger on Equipamento
 instead of delete
 as
-	if (select count(*) from Aluguer_Equipamento inner join deleted on codigo = codigoEquipamento) = 0
-		delete from Equipamento where codigo = (select codigo from deleted);
+	if (select count(*) from dbb.Aluguer_Equipamento inner join deleted on codigo = codigoEquipamento) = 0
+		delete from dbb.Equipamento where codigo = (select codigo from deleted);
 
 	else 
 		UPDATE dbb.Equipamento set hidden = 1 where codigo = (select codigo from deleted);
@@ -133,27 +133,27 @@ as
 		begin try
 		IF @dataInicio is not null
 		begin
-			update Promocao
+			update dbb.Promocao
 			set dataInicio = @dataInicio
 			where id = @id
 		end
 
 		IF @dataFim is not null
 		begin
-			update Promocao
+			update dbb.Promocao
 			set dataFim = @dataFim
 			where id = @id
 		end
 
 		IF @descricao is not null
 			begin
-				update Promocao
+				update dbb.Promocao
 				set descricao = @descricao
 				where id = @id
 			end
 		IF @tipo is not null
 			begin
-				update Promocao
+				update dbb.Promocao
 				set tipo = @tipo
 				where id = @id
 			end
@@ -182,8 +182,8 @@ go
 create trigger Delete_Promocao_Trigger on Promocao
 instead of delete
 as
-	if (select count(*) from deleted inner join Aluguer_Promocao on id = idPromocao) = 0
-		delete from promocao where id = (select id from deleted);
+	if (select count(*) from deleted inner join dbb.Aluguer_Promocao on id = idPromocao) = 0
+		delete from dbb.promocao where id = (select id from deleted);
 
 	else 
 	update dbb.Promocao set hidden = 1 where id = (select id from deleted);
@@ -268,14 +268,14 @@ as
 		
 		begin try
 			select distinct deleted.nSerie into #okToDelete
-				from deleted inner join Aluguer
-				on deleted.nSerie = Aluguer.nSerie
-				where Aluguer.dataInicio > GETDATE();
+				from deleted inner join dbb.Aluguer
+				on deleted.nSerie = dbb.Aluguer.nSerie
+				where dbb.Aluguer.dataInicio > GETDATE();
 
 			if (select count(*) from #okToDelete) <> 0 AND
-			(select COUNT(*) from #okToDelete inner join Aluguer_Equipamento on nSerie = nSerieAluguer) = 0 AND 
-			(select COUNT(*) from #okToDelete inner join Aluguer_Promocao on nSerie = nSerieAluguer) = 0
-				delete t1 from Aluguer t1 inner join #okToDelete t2 on t1.nSerie = t2.nSerie;
+			(select COUNT(*) from #okToDelete inner join dbb.Aluguer_Equipamento on nSerie = nSerieAluguer) = 0 AND 
+			(select COUNT(*) from #okToDelete inner join dbb.Aluguer_Promocao on nSerie = nSerieAluguer) = 0
+				delete t1 from dbb.Aluguer t1 inner join #okToDelete t2 on t1.nSerie = t2.nSerie;
 
 			else 
 				begin
@@ -310,11 +310,11 @@ create procedure Add_Preco
 	@valor MONEY
 as
 
-	if (select COUNT(*) from Preco where idEquipamento = @idEquipamento AND validade = @validade) = 0
-		insert into Preco values (@validade, @valor, @idEquipamento);
+	if (select COUNT(*) from dbb.Preco where idEquipamento = @idEquipamento AND validade = @validade) = 0
+		insert into dbb.Preco values (@validade, @valor, @idEquipamento);
 
 	else 
-		update Preco set valor = @valor where idEquipamento = @idEquipamento AND validade = @validade
+		update dbb.Preco set valor = @valor where idEquipamento = @idEquipamento AND validade = @validade
 		
 go
 
@@ -327,14 +327,14 @@ create procedure ListEquipamentosLivres
 	@tempo int
 as
 	select codigo, descricao
-	from Equipamento
+	from dbb.Equipamento
 	where tipo = @tipo
 	EXCEPT
 	select codigo, descricao
 	from (select * 
 		from (select * 
-			from Equipamento 
-			where tipo = @tipo) as t1 inner join Aluguer_Equipamento
+			from dbb.Equipamento 
+			where tipo = @tipo) as t1 inner join dbb.Aluguer_Equipamento
 		on codigo = codigoEquipamento) as t2 inner join Aluguer
 	on nSerie = nSerieAluguer AND Aluguer.tipo = @tempo
 	where GETDATE() between dataInicio AND dataFim
@@ -348,11 +348,11 @@ go
 create procedure ListNaoUsadosSemana
 as
 	select codigo, descricao, tipo
-	from Equipamento inner join (
+	from dbb.Equipamento inner join (
 		select codigoEquipamento
 		from (select *
-			from Aluguer
-			where dataInicio > GETDATE() - 7 AND dataInicio < GETDATE()) as t1 inner join Aluguer_Equipamento
+			from dbb.Aluguer
+			where dataInicio > GETDATE() - 7 AND dataInicio < GETDATE()) as t1 inner join dbb.Aluguer_Equipamento
 		on nSerie = nSerieAluguer) as t2
 	on codigo <> codigoEquipamento
 go
@@ -368,9 +368,9 @@ create procedure ListAlugueresBetween
 	@dataFim DATE
 as
 	select nSerie as aluguerId, tipoEquipamento, nCliente as clienteId, codigo as codigoEquipamento
-	from Aluguer inner join (
+	from dbb.Aluguer inner join (
 		(select nSerieAluguer, codigo, tipo as tipoEquipamento
-		from Aluguer_Equipamento inner join Equipamento on codigo = codigoEquipamento)) as t1
+		from dbb.Aluguer_Equipamento inner join dbb.Equipamento on codigo = codigoEquipamento)) as t1
 	on nSerie = nSerieAluguer
 	where (dataInicio between @dataInicio AND @dataFim) AND (dataFim between @dataInicio AND @dataFim)
 go
